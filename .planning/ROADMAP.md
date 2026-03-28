@@ -29,7 +29,15 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Running `/orbit-init` asks for name, role, company, projects, goals, and stakeholders, then writes `config.md` and creates the full `.orbit/` directory tree
   4. Running `/orbit-init` reports which MCP servers (Granola, Atlassian, Slack) are available in the current environment
   5. Running `/orbit-status` displays a formatted overview showing notes count, themes, pending actions, decisions, artifacts, and last brief date
-**Plans**: TBD
+**Plans**: 6 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Repo scaffold: CLAUDE.md, LICENSE, README placeholder, settings.json with PostToolUse hook
+- [ ] 01-02-PLAN.md — Agent definitions: astro.md and engin.md with full system prompts
+- [ ] 01-03-PLAN.md — Artifact templates: 5 PM document templates (prd, decision-record, weekly-summary, stakeholder-update, rice-scorecard)
+- [ ] 01-04-PLAN.md — Core skills: orbit-init (workspace setup) and orbit-status (workspace overview)
+- [ ] 01-05-PLAN.md — Remaining skills: orbit-ingest, orbit-brief, orbit-priorities, orbit-decisions, orbit-prep, orbit-artifact
+- [ ] 01-06-PLAN.md — install.sh: one-command installer with idempotent merge and smoke test
 
 ### Phase 2: Ingestion + Agents
 **Goal**: Notes arrive from any source, get automatically organized into themes with action items and decisions extracted, and Engin can answer PM questions from that context
@@ -72,7 +80,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/6 | Planned | - |
 | 2. Ingestion + Agents | 0/TBD | Not started | - |
 | 3. Intelligence Skills | 0/TBD | Not started | - |
 | 4. Documentation | 0/TBD | Not started | - |
