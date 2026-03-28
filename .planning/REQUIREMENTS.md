@@ -128,63 +128,63 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
-| FOUND-06 | Phase 1 | Pending |
-| INGS-01 | Phase 2 | Pending |
-| INGS-02 | Phase 2 | Pending |
-| INGS-03 | Phase 2 | Pending |
-| INGS-04 | Phase 2 | Pending |
-| INGS-05 | Phase 2 | Pending |
-| INGS-06 | Phase 2 | Pending |
-| INGS-07 | Phase 2 | Pending |
-| ASTR-01 | Phase 2 | Pending |
-| ASTR-02 | Phase 2 | Pending |
-| ASTR-03 | Phase 2 | Pending |
-| ASTR-04 | Phase 2 | Pending |
-| ASTR-05 | Phase 2 | Pending |
-| ASTR-06 | Phase 2 | Pending |
-| ASTR-07 | Phase 2 | Pending |
-| ASTR-08 | Phase 2 | Pending |
-| ENGN-01 | Phase 2 | Pending |
-| ENGN-02 | Phase 2 | Pending |
-| ENGN-03 | Phase 2 | Pending |
-| ENGN-04 | Phase 2 | Pending |
-| BREF-01 | Phase 3 | Pending |
-| BREF-02 | Phase 3 | Pending |
-| BREF-03 | Phase 3 | Pending |
-| PRIO-01 | Phase 3 | Pending |
-| PRIO-02 | Phase 3 | Pending |
-| PRIO-03 | Phase 3 | Pending |
-| PRIO-04 | Phase 3 | Pending |
-| DCSN-01 | Phase 3 | Pending |
-| DCSN-02 | Phase 3 | Pending |
-| DCSN-03 | Phase 3 | Pending |
-| DCSN-04 | Phase 3 | Pending |
-| PREP-01 | Phase 3 | Pending |
-| PREP-02 | Phase 3 | Pending |
-| PREP-03 | Phase 3 | Pending |
-| PREP-04 | Phase 3 | Pending |
-| ARTF-01 | Phase 3 | Pending |
-| ARTF-02 | Phase 3 | Pending |
-| ARTF-03 | Phase 3 | Pending |
-| ARTF-04 | Phase 3 | Pending |
-| BRND-01 | Phase 2 | Pending |
-| BRND-02 | Phase 2 | Pending |
-| BRND-03 | Phase 2 | Pending |
-| BRND-04 | Phase 2 | Pending |
-| DOCS-01 | Phase 4 | Pending |
-| DOCS-02 | Phase 4 | Pending |
-| DOCS-03 | Phase 4 | Pending |
+| FOUND-01 | Phase 1 - Foundation | Pending |
+| FOUND-02 | Phase 1 - Foundation | Pending |
+| FOUND-03 | Phase 1 - Foundation | Pending |
+| FOUND-04 | Phase 1 - Foundation | Pending |
+| FOUND-05 | Phase 1 - Foundation | Pending |
+| FOUND-06 | Phase 1 - Foundation | Pending |
+| INGS-01 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-02 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-03 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-04 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-05 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-06 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-07 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-01 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-02 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-03 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-04 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-05 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-06 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-07 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-08 | Phase 2 - Ingestion + Agents | Pending |
+| ENGN-01 | Phase 2 - Ingestion + Agents | Pending |
+| ENGN-02 | Phase 2 - Ingestion + Agents | Pending |
+| ENGN-03 | Phase 2 - Ingestion + Agents | Pending |
+| ENGN-04 | Phase 2 - Ingestion + Agents | Pending |
+| BRND-01 | Phase 2 - Ingestion + Agents | Pending |
+| BRND-02 | Phase 2 - Ingestion + Agents | Pending |
+| BRND-03 | Phase 2 - Ingestion + Agents | Pending |
+| BRND-04 | Phase 2 - Ingestion + Agents | Pending |
+| BREF-01 | Phase 3 - Intelligence Skills | Pending |
+| BREF-02 | Phase 3 - Intelligence Skills | Pending |
+| BREF-03 | Phase 3 - Intelligence Skills | Pending |
+| PRIO-01 | Phase 3 - Intelligence Skills | Pending |
+| PRIO-02 | Phase 3 - Intelligence Skills | Pending |
+| PRIO-03 | Phase 3 - Intelligence Skills | Pending |
+| PRIO-04 | Phase 3 - Intelligence Skills | Pending |
+| DCSN-01 | Phase 3 - Intelligence Skills | Pending |
+| DCSN-02 | Phase 3 - Intelligence Skills | Pending |
+| DCSN-03 | Phase 3 - Intelligence Skills | Pending |
+| DCSN-04 | Phase 3 - Intelligence Skills | Pending |
+| PREP-01 | Phase 3 - Intelligence Skills | Pending |
+| PREP-02 | Phase 3 - Intelligence Skills | Pending |
+| PREP-03 | Phase 3 - Intelligence Skills | Pending |
+| PREP-04 | Phase 3 - Intelligence Skills | Pending |
+| ARTF-01 | Phase 3 - Intelligence Skills | Pending |
+| ARTF-02 | Phase 3 - Intelligence Skills | Pending |
+| ARTF-03 | Phase 3 - Intelligence Skills | Pending |
+| ARTF-04 | Phase 3 - Intelligence Skills | Pending |
+| DOCS-01 | Phase 4 - Documentation | Pending |
+| DOCS-02 | Phase 4 - Documentation | Pending |
+| DOCS-03 | Phase 4 - Documentation | Pending |
 
 **Coverage:**
 - v1 requirements: 47 total
 - Mapped to phases: 47
-- Unmapped: 0 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-28*
-*Last updated: 2026-03-28 after initial definition*
+*Last updated: 2026-03-28 after roadmap creation*
