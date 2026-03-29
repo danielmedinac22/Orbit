@@ -19,18 +19,17 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 - ✓ Install script (`install.sh`) — one command copies skills, agents, settings into user's project — Phase 1
 - ✓ 5 artifact templates — PRD, Decision Record, Weekly Summary, Stakeholder Update, RICE Scorecard — Phase 1
 - ✓ Spatial branding — Astro and Engin have distinct voices, terminal output uses space station metaphor — Phase 1
+- ✓ Note ingestion (`/orbit-ingest`) — 5-source guided flow with MCP detection — Validated in Phase 2
+- ✓ Automatic organization (Astro agent) — theme assignment, action extraction, decision logging, index rebuild, auto-triggered via hook — Validated in Phase 2
+- ✓ Engin agent with persistent memory — 7 capabilities, cited sources, fact-type labeling, advisor voice — Validated in Phase 2
 
 ### Active
 
-- [ ] Note ingestion (`/orbit-ingest`) — guided flow: Granola MCP / Jira / Slack / file / paste → notes in `.orbit/notes/`
-- [ ] Note ingestion (`/orbit-ingest`) — guided flow: Granola MCP / Jira / Slack / file / paste → notes in `.orbit/notes/`
-- [ ] Automatic organization (Astro agent) — assigns themes, extracts action items, logs decisions, rebuilds index. Triggered via hook after ingestion.
 - [ ] Daily/weekly briefing (`/orbit-brief`) — morning brief with overdue items, key updates, open questions
 - [ ] RICE prioritization (`/orbit-priorities`) — score features/initiatives using real meeting evidence
 - [ ] Decision tracking (`/orbit-decisions`) — audit decisions: find contradictions, stalled, reversals
 - [ ] Meeting preparation (`/orbit-prep`) — gather context per attendee, generate talking points, suggested agenda
 - [ ] Artifact generation (`/orbit-artifact`) — generate PRDs, decision records, summaries from templates + context
-- [ ] Engin agent with persistent memory — expert PM advisor with 7 capabilities, gets smarter across sessions
 - [ ] README — install instructions, quick start, Granola setup, skill reference, Engin capabilities
 
 ### Out of Scope
@@ -65,10 +64,10 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 |----------|-----------|---------|
 | Skills + Agents instead of Commands | Skills have frontmatter (arguments, tool restrictions, model control), agents have persistent memory | — Pending |
 | Notes as core unit (not "sources") | Granola/Claude already process transcripts; Orbit organizes, doesn't reprocess | — Pending |
-| Hooks for auto-Astro after ingestion | No manual `/astro` step needed — seamless flow | — Pending |
+| Hooks for auto-Astro after ingestion | No manual `/astro` step needed — seamless flow | Implemented Phase 2 |
 | Decision log as first-class artifact | Most PM tools ignore decision tracking; this is a differentiator | — Pending |
 | Flat notes, themes as views | Notes in `.orbit/notes/`, themes reference via frontmatter — no file moving | — Pending |
 | Level 1 branding (spatial experience, clear names) | PM must understand skills without reading docs; spatial flavor in messages | — Pending |
 
 ---
-*Last updated: 2026-03-29 after Phase 1 completion — repo scaffold, agents, skills, templates, and install.sh all in place*
+*Last updated: 2026-03-29 after Phase 2 completion — ingestion pipeline, Astro auto-delegation hook, navigator voice, Engin advisor vocabulary all verified*
