@@ -14,23 +14,23 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Workspace initialization (`/orbit-init`) — creates `.orbit/` structure with user profile, detects available MCPs — Phase 1
+- ✓ Workspace status (`/orbit-status`) — overview of notes, themes, actions, decisions, artifacts — Phase 1
+- ✓ Install script (`install.sh`) — one command copies skills, agents, settings into user's project — Phase 1
+- ✓ 5 artifact templates — PRD, Decision Record, Weekly Summary, Stakeholder Update, RICE Scorecard — Phase 1
+- ✓ Spatial branding — Astro and Engin have distinct voices, terminal output uses space station metaphor — Phase 1
 
 ### Active
 
-- [ ] Workspace initialization (`/orbit-init`) — creates `.orbit/` structure with user profile, detects available MCPs
+- [ ] Note ingestion (`/orbit-ingest`) — guided flow: Granola MCP / Jira / Slack / file / paste → notes in `.orbit/notes/`
 - [ ] Note ingestion (`/orbit-ingest`) — guided flow: Granola MCP / Jira / Slack / file / paste → notes in `.orbit/notes/`
 - [ ] Automatic organization (Astro agent) — assigns themes, extracts action items, logs decisions, rebuilds index. Triggered via hook after ingestion.
-- [ ] Workspace status (`/orbit-status`) — overview of notes, themes, actions, decisions, artifacts
 - [ ] Daily/weekly briefing (`/orbit-brief`) — morning brief with overdue items, key updates, open questions
 - [ ] RICE prioritization (`/orbit-priorities`) — score features/initiatives using real meeting evidence
 - [ ] Decision tracking (`/orbit-decisions`) — audit decisions: find contradictions, stalled, reversals
 - [ ] Meeting preparation (`/orbit-prep`) — gather context per attendee, generate talking points, suggested agenda
 - [ ] Artifact generation (`/orbit-artifact`) — generate PRDs, decision records, summaries from templates + context
 - [ ] Engin agent with persistent memory — expert PM advisor with 7 capabilities, gets smarter across sessions
-- [ ] Spatial branding — Astro and Engin have distinct voices, terminal output uses space station metaphor (signals, constellations, missions, coordinates)
-- [ ] Install script (`install.sh`) — one command copies skills, agents, settings into user's project
-- [ ] 5 artifact templates — PRD, Decision Record, Weekly Summary, Stakeholder Update, RICE Scorecard
 - [ ] README — install instructions, quick start, Granola setup, skill reference, Engin capabilities
 
 ### Out of Scope
@@ -71,4 +71,4 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 | Level 1 branding (spatial experience, clear names) | PM must understand skills without reading docs; spatial flavor in messages | — Pending |
 
 ---
-*Last updated: 2026-03-28 after initialization*
+*Last updated: 2026-03-29 after Phase 1 completion — repo scaffold, agents, skills, templates, and install.sh all in place*
