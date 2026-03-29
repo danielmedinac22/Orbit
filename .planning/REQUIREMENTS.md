@@ -10,9 +10,9 @@
 - [x] **FOUND-01**: Repo has CLAUDE.md with project-level instructions that Claude Code loads automatically
 - [ ] **FOUND-02**: `install.sh` copies skills, agents, and settings into user's project in one command
 - [x] **FOUND-03**: `/orbit-init` creates `.orbit/` directory structure with config, notes, themes, action-items, decisions, briefs, artifacts, templates, index
-- [ ] **FOUND-04**: `/orbit-init` asks user for name, role, company, projects, goals, stakeholders and writes `config.md`
-- [ ] **FOUND-05**: `/orbit-init` detects available MCP servers (Granola, Atlassian, Slack) and reports them
-- [ ] **FOUND-06**: `/orbit-status` reads `.orbit/` and displays formatted workspace overview (notes count, themes, actions, decisions, artifacts, last brief)
+- [x] **FOUND-04**: `/orbit-init` asks user for name, role, company, projects, goals, stakeholders and writes `config.md`
+- [x] **FOUND-05**: `/orbit-init` detects available MCP servers (Granola, Atlassian, Slack) and reports them
+- [x] **FOUND-06**: `/orbit-status` reads `.orbit/` and displays formatted workspace overview (notes count, themes, actions, decisions, artifacts, last brief)
 
 ### Ingestion
 
@@ -131,9 +131,9 @@
 | FOUND-01 | Phase 1 - Foundation | Complete |
 | FOUND-02 | Phase 1 - Foundation | Pending |
 | FOUND-03 | Phase 1 - Foundation | Complete |
-| FOUND-04 | Phase 1 - Foundation | Pending |
-| FOUND-05 | Phase 1 - Foundation | Pending |
-| FOUND-06 | Phase 1 - Foundation | Pending |
+| FOUND-04 | Phase 1 - Foundation | Complete |
+| FOUND-05 | Phase 1 - Foundation | Complete |
+| FOUND-06 | Phase 1 - Foundation | Complete |
 | INGS-01 | Phase 2 - Ingestion + Agents | Pending |
 | INGS-02 | Phase 2 - Ingestion + Agents | Pending |
 | INGS-03 | Phase 2 - Ingestion + Agents | Pending |
