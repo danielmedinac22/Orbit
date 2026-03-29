@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-05-PLAN.md
-last_updated: "2026-03-29T03:12:00.000Z"
+stopped_at: Completed 01-06-PLAN.md
+last_updated: "2026-03-29T12:40:06.693Z"
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -51,6 +51,7 @@ Plan: 6 of 6 (plans 01-01, 01-02, 01-03, 01-04, 01-05 complete)
 | Phase 01-foundation P04 | 87 | 2 tasks | 2 files |
 | Phase 01-foundation P02 | 9 | 2 tasks | 2 files |
 | Phase 01-foundation P05 | 12 | 2 tasks | 6 files |
+| Phase 01-foundation P06 | 4 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation P05]: Skill bodies are complete workflow instructions — they ARE the Phase 3 implementation (Claude prompts, not code stubs)
 - [Phase 01-foundation P05]: MCP detection uses tool name pattern matching; only offer sources actually available
 - [Phase 01-foundation P05]: Spatial branding exclusively in terminal output sections — not in YAML frontmatter or skill descriptions
+- [Phase 01-foundation]: install.sh is purely a file installer — does not auto-run /orbit-init (per locked decision)
+- [Phase 01-foundation]: CLAUDE.md idempotency uses '# Orbit — Context Copilot for Product Managers' marker string
+- [Phase 01-foundation]: settings.json merge uses python3 with set intersection deduplication (no jq dependency)
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T03:12:00.000Z
-Stopped at: Completed 01-05-PLAN.md
+Last session: 2026-03-29T12:40:06.691Z
+Stopped at: Completed 01-06-PLAN.md
 Resume file: None
