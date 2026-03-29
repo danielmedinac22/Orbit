@@ -9,7 +9,7 @@
 
 - [ ] **FOUND-01**: Repo has CLAUDE.md with project-level instructions that Claude Code loads automatically
 - [ ] **FOUND-02**: `install.sh` copies skills, agents, and settings into user's project in one command
-- [ ] **FOUND-03**: `/orbit-init` creates `.orbit/` directory structure with config, notes, themes, action-items, decisions, briefs, artifacts, templates, index
+- [x] **FOUND-03**: `/orbit-init` creates `.orbit/` directory structure with config, notes, themes, action-items, decisions, briefs, artifacts, templates, index
 - [ ] **FOUND-04**: `/orbit-init` asks user for name, role, company, projects, goals, stakeholders and writes `config.md`
 - [ ] **FOUND-05**: `/orbit-init` detects available MCP servers (Granola, Atlassian, Slack) and reports them
 - [ ] **FOUND-06**: `/orbit-status` reads `.orbit/` and displays formatted workspace overview (notes count, themes, actions, decisions, artifacts, last brief)
@@ -130,7 +130,7 @@
 |-------------|-------|--------|
 | FOUND-01 | Phase 1 - Foundation | Pending |
 | FOUND-02 | Phase 1 - Foundation | Pending |
-| FOUND-03 | Phase 1 - Foundation | Pending |
+| FOUND-03 | Phase 1 - Foundation | Complete |
 | FOUND-04 | Phase 1 - Foundation | Pending |
 | FOUND-05 | Phase 1 - Foundation | Pending |
 | FOUND-06 | Phase 1 - Foundation | Pending |
