@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-04-PLAN.md
-last_updated: "2026-03-29T02:47:05.611Z"
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-03-29T02:47:35.308Z"
 progress:
   total_phases: 4
   completed_phases: 0
@@ -49,6 +49,7 @@ Plan: 5 of 6 (plans 01-01, 01-02, 01-03, 01-04 complete)
 | Phase 01-foundation P03 | 2 | 2 tasks | 5 files |
 | Phase 01-foundation P01 | 5 | 1 tasks | 4 files |
 | Phase 01-foundation P04 | 87 | 2 tasks | 2 files |
+| Phase 01-foundation P02 | 9 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,8 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: 01-04: orbit-status restricts to Read/Glob/Grep only — enforces read-only contract
 - [Phase 01-foundation]: 01-04: Spatial terms appear only in terminal output — not in SKILL.md frontmatter, error messages, or file content
 - [Phase 01-foundation]: 01-04: Sample note uses themes: [] so Astro organizes it during first orbit-ingest run
+- [Phase 01-foundation]: Astro uses model: sonnet (not inherit) for bounded organization tasks; Engin uses model: inherit to allow Opus-level reasoning for advisory work
+- [Phase 01-foundation]: Engin disallows only Bash (needs WebSearch for PM research); Astro disallows Bash/Agent/WebSearch/WebFetch (pure file work)
 
 ### Pending Todos
 
@@ -81,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T02:47:05.610Z
-Stopped at: Completed 01-04-PLAN.md
+Last session: 2026-03-29T02:47:35.306Z
+Stopped at: Completed 01-02-PLAN.md
 Resume file: None
