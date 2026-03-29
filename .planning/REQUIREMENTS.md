@@ -16,17 +16,17 @@
 
 ### Ingestion
 
-- [ ] **INGS-01**: `/orbit-ingest` presents guided flow asking user where to bring notes from (based on detected MCPs + manual options)
-- [ ] **INGS-02**: Granola MCP path: user specifies date range, Claude fetches meetings and writes standard notes to `.orbit/notes/`
-- [ ] **INGS-03**: File path: user provides file, Claude reads and generates structured note with summary, key points, decisions, action items, participants
-- [ ] **INGS-04**: Paste path: user pastes content in conversation, Claude generates structured note
-- [ ] **INGS-05**: Jira MCP path: user specifies project/JQL, Claude fetches issues and writes as notes
-- [ ] **INGS-06**: Slack MCP path: user specifies channel/thread, Claude fetches digest and writes as note
-- [ ] **INGS-07**: All notes follow standard format: YAML frontmatter (title, date, source, participants, themes, decisions, questions, action_items) + markdown body
+- [x] **INGS-01**: `/orbit-ingest` presents guided flow asking user where to bring notes from (based on detected MCPs + manual options)
+- [x] **INGS-02**: Granola MCP path: user specifies date range, Claude fetches meetings and writes standard notes to `.orbit/notes/`
+- [x] **INGS-03**: File path: user provides file, Claude reads and generates structured note with summary, key points, decisions, action items, participants
+- [x] **INGS-04**: Paste path: user pastes content in conversation, Claude generates structured note
+- [x] **INGS-05**: Jira MCP path: user specifies project/JQL, Claude fetches issues and writes as notes
+- [x] **INGS-06**: Slack MCP path: user specifies channel/thread, Claude fetches digest and writes as note
+- [x] **INGS-07**: All notes follow standard format: YAML frontmatter (title, date, source, participants, themes, decisions, questions, action_items) + markdown body
 
 ### Organization (Astro Agent)
 
-- [ ] **ASTR-01**: Astro agent defined in `.claude/agents/astro.md` with model: sonnet, memory: project, restricted tools
+- [x] **ASTR-01**: Astro agent defined in `.claude/agents/astro.md` with model: sonnet, memory: project, restricted tools
 - [x] **ASTR-02**: Astro reads unorganized notes (themes: [] in frontmatter) and assigns themes semantically (synonyms, translations, abbreviations)
 - [x] **ASTR-03**: Astro extracts action items from notes and writes to `.orbit/themes/<theme>/action-items.md` (deduplicating)
 - [x] **ASTR-04**: Astro suggests new themes in `.orbit/themes/_suggested/` when content doesn't fit existing themes
@@ -37,10 +37,10 @@
 
 ### Synthesis (Engin Agent)
 
-- [ ] **ENGN-01**: Engin agent defined in `.claude/agents/engin.md` with memory: project, inherit model, WebSearch access
-- [ ] **ENGN-02**: Engin answers PM questions with cited sources: "(from Meeting Title, YYYY-MM-DD)"
-- [ ] **ENGN-03**: Engin distinguishes decisions (confirmed) from discussions (open) from inference (analysis)
-- [ ] **ENGN-04**: Engin's persistent memory accumulates context across sessions (stakeholder dynamics, PM preferences, workspace patterns)
+- [x] **ENGN-01**: Engin agent defined in `.claude/agents/engin.md` with memory: project, inherit model, WebSearch access
+- [x] **ENGN-02**: Engin answers PM questions with cited sources: "(from Meeting Title, YYYY-MM-DD)"
+- [x] **ENGN-03**: Engin distinguishes decisions (confirmed) from discussions (open) from inference (analysis)
+- [x] **ENGN-04**: Engin's persistent memory accumulates context across sessions (stakeholder dynamics, PM preferences, workspace patterns)
 
 ### Briefs
 
@@ -79,9 +79,9 @@
 ### Branding
 
 - [x] **BRND-01**: Astro messages use navigator voice: "Signal scan complete. 4 signals → 3 constellations. Star chart updated."
-- [ ] **BRND-02**: Engin messages use advisor voice: direct, opinionated, uses "drifting" for overdue, "coordinates" for decisions
-- [ ] **BRND-03**: `/orbit-status` uses spatial formatting: ◉ Orbit Station, ★ for themes, missions for action items
-- [ ] **BRND-04**: All skill completion messages suggest the logical next step
+- [x] **BRND-02**: Engin messages use advisor voice: direct, opinionated, uses "drifting" for overdue, "coordinates" for decisions
+- [x] **BRND-03**: `/orbit-status` uses spatial formatting: ◉ Orbit Station, ★ for themes, missions for action items
+- [x] **BRND-04**: All skill completion messages suggest the logical next step
 
 ### Documentation
 
@@ -134,14 +134,14 @@
 | FOUND-04 | Phase 1 - Foundation | Complete |
 | FOUND-05 | Phase 1 - Foundation | Complete |
 | FOUND-06 | Phase 1 - Foundation | Complete |
-| INGS-01 | Phase 2 - Ingestion + Agents | Pending |
-| INGS-02 | Phase 2 - Ingestion + Agents | Pending |
-| INGS-03 | Phase 2 - Ingestion + Agents | Pending |
-| INGS-04 | Phase 2 - Ingestion + Agents | Pending |
-| INGS-05 | Phase 2 - Ingestion + Agents | Pending |
-| INGS-06 | Phase 2 - Ingestion + Agents | Pending |
-| INGS-07 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-01 | Phase 2 - Ingestion + Agents | Pending |
+| INGS-01 | Phase 2 - Ingestion + Agents | Complete |
+| INGS-02 | Phase 2 - Ingestion + Agents | Complete |
+| INGS-03 | Phase 2 - Ingestion + Agents | Complete |
+| INGS-04 | Phase 2 - Ingestion + Agents | Complete |
+| INGS-05 | Phase 2 - Ingestion + Agents | Complete |
+| INGS-06 | Phase 2 - Ingestion + Agents | Complete |
+| INGS-07 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-01 | Phase 2 - Ingestion + Agents | Complete |
 | ASTR-02 | Phase 2 - Ingestion + Agents | Complete |
 | ASTR-03 | Phase 2 - Ingestion + Agents | Complete |
 | ASTR-04 | Phase 2 - Ingestion + Agents | Complete |
@@ -149,14 +149,14 @@
 | ASTR-06 | Phase 2 - Ingestion + Agents | Complete |
 | ASTR-07 | Phase 2 - Ingestion + Agents | Complete |
 | ASTR-08 | Phase 2 - Ingestion + Agents | Complete |
-| ENGN-01 | Phase 2 - Ingestion + Agents | Pending |
-| ENGN-02 | Phase 2 - Ingestion + Agents | Pending |
-| ENGN-03 | Phase 2 - Ingestion + Agents | Pending |
-| ENGN-04 | Phase 2 - Ingestion + Agents | Pending |
+| ENGN-01 | Phase 2 - Ingestion + Agents | Complete |
+| ENGN-02 | Phase 2 - Ingestion + Agents | Complete |
+| ENGN-03 | Phase 2 - Ingestion + Agents | Complete |
+| ENGN-04 | Phase 2 - Ingestion + Agents | Complete |
 | BRND-01 | Phase 2 - Ingestion + Agents | Complete |
-| BRND-02 | Phase 2 - Ingestion + Agents | Pending |
-| BRND-03 | Phase 2 - Ingestion + Agents | Pending |
-| BRND-04 | Phase 2 - Ingestion + Agents | Pending |
+| BRND-02 | Phase 2 - Ingestion + Agents | Complete |
+| BRND-03 | Phase 2 - Ingestion + Agents | Complete |
+| BRND-04 | Phase 2 - Ingestion + Agents | Complete |
 | BREF-01 | Phase 3 - Intelligence Skills | Pending |
 | BREF-02 | Phase 3 - Intelligence Skills | Pending |
 | BREF-03 | Phase 3 - Intelligence Skills | Pending |
