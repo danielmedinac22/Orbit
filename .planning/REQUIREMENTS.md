@@ -27,13 +27,13 @@
 ### Organization (Astro Agent)
 
 - [ ] **ASTR-01**: Astro agent defined in `.claude/agents/astro.md` with model: sonnet, memory: project, restricted tools
-- [ ] **ASTR-02**: Astro reads unorganized notes (themes: [] in frontmatter) and assigns themes semantically (synonyms, translations, abbreviations)
-- [ ] **ASTR-03**: Astro extracts action items from notes and writes to `.orbit/themes/<theme>/action-items.md` (deduplicating)
-- [ ] **ASTR-04**: Astro suggests new themes in `.orbit/themes/_suggested/` when content doesn't fit existing themes
-- [ ] **ASTR-05**: Astro updates `.orbit/action-items/pending.md` (global view across themes)
-- [ ] **ASTR-06**: Astro logs decisions from note frontmatter to `.orbit/decisions/log.md`
-- [ ] **ASTR-07**: Astro rebuilds `.orbit/index.md` (knowledge index with theme overview, cross-theme patterns, counts)
-- [ ] **ASTR-08**: Hook in `.claude/settings.json` auto-triggers Astro after a note is written to `.orbit/notes/`
+- [x] **ASTR-02**: Astro reads unorganized notes (themes: [] in frontmatter) and assigns themes semantically (synonyms, translations, abbreviations)
+- [x] **ASTR-03**: Astro extracts action items from notes and writes to `.orbit/themes/<theme>/action-items.md` (deduplicating)
+- [x] **ASTR-04**: Astro suggests new themes in `.orbit/themes/_suggested/` when content doesn't fit existing themes
+- [x] **ASTR-05**: Astro updates `.orbit/action-items/pending.md` (global view across themes)
+- [x] **ASTR-06**: Astro logs decisions from note frontmatter to `.orbit/decisions/log.md`
+- [x] **ASTR-07**: Astro rebuilds `.orbit/index.md` (knowledge index with theme overview, cross-theme patterns, counts)
+- [x] **ASTR-08**: Hook in `.claude/settings.json` auto-triggers Astro after a note is written to `.orbit/notes/`
 
 ### Synthesis (Engin Agent)
 
@@ -78,7 +78,7 @@
 
 ### Branding
 
-- [ ] **BRND-01**: Astro messages use navigator voice: "Signal scan complete. 4 signals → 3 constellations. Star chart updated."
+- [x] **BRND-01**: Astro messages use navigator voice: "Signal scan complete. 4 signals → 3 constellations. Star chart updated."
 - [ ] **BRND-02**: Engin messages use advisor voice: direct, opinionated, uses "drifting" for overdue, "coordinates" for decisions
 - [ ] **BRND-03**: `/orbit-status` uses spatial formatting: ◉ Orbit Station, ★ for themes, missions for action items
 - [ ] **BRND-04**: All skill completion messages suggest the logical next step
@@ -142,18 +142,18 @@
 | INGS-06 | Phase 2 - Ingestion + Agents | Pending |
 | INGS-07 | Phase 2 - Ingestion + Agents | Pending |
 | ASTR-01 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-02 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-03 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-04 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-05 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-06 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-07 | Phase 2 - Ingestion + Agents | Pending |
-| ASTR-08 | Phase 2 - Ingestion + Agents | Pending |
+| ASTR-02 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-03 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-04 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-05 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-06 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-07 | Phase 2 - Ingestion + Agents | Complete |
+| ASTR-08 | Phase 2 - Ingestion + Agents | Complete |
 | ENGN-01 | Phase 2 - Ingestion + Agents | Pending |
 | ENGN-02 | Phase 2 - Ingestion + Agents | Pending |
 | ENGN-03 | Phase 2 - Ingestion + Agents | Pending |
 | ENGN-04 | Phase 2 - Ingestion + Agents | Pending |
-| BRND-01 | Phase 2 - Ingestion + Agents | Pending |
+| BRND-01 | Phase 2 - Ingestion + Agents | Complete |
 | BRND-02 | Phase 2 - Ingestion + Agents | Pending |
 | BRND-03 | Phase 2 - Ingestion + Agents | Pending |
 | BRND-04 | Phase 2 - Ingestion + Agents | Pending |
