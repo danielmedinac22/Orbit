@@ -80,7 +80,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 4/6 | In Progress|  |
+| 1. Foundation | 5/6 | In Progress|  |
 | 2. Ingestion + Agents | 0/TBD | Not started | - |
 | 3. Intelligence Skills | 0/TBD | Not started | - |
 | 4. Documentation | 0/TBD | Not started | - |

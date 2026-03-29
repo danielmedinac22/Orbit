@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-03-29T02:47:35.308Z"
+stopped_at: Completed 01-05-PLAN.md
+last_updated: "2026-03-29T03:12:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 6
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-28)
 ## Current Position
 
 Phase: 01 (foundation) — EXECUTING
-Plan: 5 of 6 (plans 01-01, 01-02, 01-03, 01-04 complete)
+Plan: 6 of 6 (plans 01-01, 01-02, 01-03, 01-04, 01-05 complete)
 
 ## Performance Metrics
 
@@ -50,6 +50,7 @@ Plan: 5 of 6 (plans 01-01, 01-02, 01-03, 01-04 complete)
 | Phase 01-foundation P01 | 5 | 1 tasks | 4 files |
 | Phase 01-foundation P04 | 87 | 2 tasks | 2 files |
 | Phase 01-foundation P02 | 9 | 2 tasks | 2 files |
+| Phase 01-foundation P05 | 12 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: 01-04: Sample note uses themes: [] so Astro organizes it during first orbit-ingest run
 - [Phase 01-foundation]: Astro uses model: sonnet (not inherit) for bounded organization tasks; Engin uses model: inherit to allow Opus-level reasoning for advisory work
 - [Phase 01-foundation]: Engin disallows only Bash (needs WebSearch for PM research); Astro disallows Bash/Agent/WebSearch/WebFetch (pure file work)
+- [Phase 01-foundation P05]: Skill bodies are complete workflow instructions — they ARE the Phase 3 implementation (Claude prompts, not code stubs)
+- [Phase 01-foundation P05]: MCP detection uses tool name pattern matching; only offer sources actually available
+- [Phase 01-foundation P05]: Spatial branding exclusively in terminal output sections — not in YAML frontmatter or skill descriptions
 
 ### Pending Todos
 
@@ -84,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T02:47:35.306Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-03-29T03:12:00.000Z
+Stopped at: Completed 01-05-PLAN.md
 Resume file: None
