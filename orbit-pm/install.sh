@@ -22,7 +22,7 @@ for src_agent in "$SCRIPT_DIR/.claude/agents/"*.md; do
     agent_name=$(basename "$src_agent")
     dest_agent="$DEST/.claude/agents/$agent_name"
     if [ -f "$dest_agent" ]; then
-        read -r -p "Orbit agent already exists: $agent_name. Overwrite? [y/N] " response
+        read -r -p "Orbit agent already exists: $agent_name. Overwrite? [y/N] " response || response=""
         case "$response" in
             [yY][eE][sS]|[yY])
                 cp "$src_agent" "$dest_agent"
@@ -47,10 +47,11 @@ for src_skill_dir in "$SCRIPT_DIR/.claude/skills"/*/; do
     skill_name=$(basename "$src_skill_dir")
     dest_skill_dir="$DEST/.claude/skills/$skill_name"
     if [ -d "$dest_skill_dir" ]; then
-        read -r -p "Skill '$skill_name' already exists. Overwrite? [y/N] " response
+        read -r -p "Skill '$skill_name' already exists. Overwrite? [y/N] " response || response=""
         case "$response" in
             [yY][eE][sS]|[yY])
-                cp -r "$src_skill_dir" "$DEST/.claude/skills/"
+                rm -rf "$dest_skill_dir"
+                cp -r "${src_skill_dir%/}" "$DEST/.claude/skills/"
                 echo "  Updated skill: $skill_name"
                 ;;
             *)
@@ -58,7 +59,7 @@ for src_skill_dir in "$SCRIPT_DIR/.claude/skills"/*/; do
                 ;;
         esac
     else
-        cp -r "$src_skill_dir" "$DEST/.claude/skills/"
+        cp -r "${src_skill_dir%/}" "$DEST/.claude/skills/"
         echo "  Installed skill: $skill_name"
     fi
 done
@@ -135,7 +136,7 @@ if [ -d "$DEST_TEMPLATES" ]; then
         template_name=$(basename "$src_template")
         dest_template="$DEST_TEMPLATES/$template_name"
         if [ -f "$dest_template" ]; then
-            read -r -p "Template '$template_name' already exists. Overwrite? [y/N] " response
+            read -r -p "Template '$template_name' already exists. Overwrite? [y/N] " response || response=""
             case "$response" in
                 [yY][eE][sS]|[yY])
                     cp "$src_template" "$dest_template"
