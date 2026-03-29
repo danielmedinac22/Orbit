@@ -1,0 +1,129 @@
+---
+name: orbit-brief
+description: >
+  Generate morning brief or weekly summary. Synthesizes recent notes,
+  action items, decisions, and open questions.
+argument-hint: "[daily (default) | weekly]"
+---
+
+Generate a morning brief or weekly summary by synthesizing recent notes, action items, decisions, and open questions. Delegates synthesis to Engin.
+
+## Parse Arguments
+
+- No argument or "daily" → generate daily brief
+- "weekly" → generate weekly brief
+
+## Context Assembly
+
+Always read these files first:
+
+1. `.orbit/config.md` — user profile, goals, stakeholders
+2. `.orbit/index.md` — knowledge overview and theme summary
+3. `.orbit/decisions/log.md` — tracked decisions and their status
+4. `.orbit/action-items/pending.md` — pending action items across all themes
+
+## Daily Brief Flow
+
+1. Gather notes from the last 24-48 hours (notes with `date:` in the last 2 days)
+2. Flag overdue action items: items with `due:` date in the past that are still `status: pending`
+3. Identify open questions without resolution (from note frontmatter `questions:`)
+4. Group key updates by theme
+5. Generate brief using the Mission Briefing format (below)
+6. Write to `.orbit/briefs/YYYY-MM-DD.md`
+7. Display in conversation
+
+## Weekly Brief Flow
+
+1. Gather all notes from the current week (last 7 days)
+2. Compute decision velocity: how many decisions confirmed vs stalled
+3. Track action item burndown: completed vs new vs overdue
+4. Identify cross-theme patterns and risks
+5. Generate brief using the Weekly format (below)
+6. Write to `.orbit/briefs/week-YYYY-MM-DD.md`
+7. Display in conversation
+
+## Daily Brief Output Format
+
+```markdown
+# Mission Briefing — YYYY-MM-DD
+
+## ⚠️ Drifting
+- **[Person]**: [action item] — [X] days overdue
+- Coordinate needed: [open question] (open since [date])
+
+## Signals from the last 48h
+### [Theme Name]
+- [Key update] ([source note title], [date])
+- [Key update] ([source note title], [date])
+
+### [Theme Name]
+- [Key update] ([source note title], [date])
+
+## Active Missions
+### [Theme Name]
+- [ ] **[Person]**: [action item] — due [date]
+- [ ] **[Person]**: [action item] — [OVERDUE]
+
+## Open Coordinates
+- [Unresolved question] ([source note], [date])
+- [Unresolved question] ([source note], [date])
+
+---
+*From N notes across N themes*
+```
+
+### Section rules:
+- **"⚠️ Drifting"**: overdue action items (most overdue first) + stalled decisions needing a call
+- **"Signals from the last 48h"**: grouped by theme, cite source note and date for each
+- **"Active Missions"**: all pending action items, group by theme, flag OVERDUE items in brackets
+- **"Open Coordinates"**: unresolved questions from note frontmatter, cite where they were raised
+- If a section has no entries, omit that section
+- Lead with urgency — the most critical items appear first
+
+## Weekly Brief Output Format
+
+```markdown
+# Weekly Briefing — Week of YYYY-MM-DD
+
+## Decision Velocity
+- Confirmed: N decisions this week
+- Stalled: N decisions confirmed but no follow-up actions
+- Open: N questions without resolution
+
+## Theme Progress
+### [Theme Name]
+- Notes this week: N
+- Decisions: [list confirmed decisions]
+- Missions completed: N | New: N | Overdue: N
+
+## Action Item Burndown
+- Completed: N
+- New: N
+- Overdue: N (names)
+
+## Cross-Theme Patterns
+- [Observation spanning multiple themes]
+
+## Risks This Week
+- [Risk with evidence]
+
+---
+*From N notes across N themes*
+```
+
+## After Generating
+
+After writing the brief file:
+
+1. Display the full brief in conversation
+2. Suggest next step:
+   - If overdue items: "Run /orbit-decisions to audit stalled decisions."
+   - If multiple themes with updates: "Run /orbit-priorities for a priority scan."
+   - Default: "Run /orbit-priorities for a priority scan."
+
+## Error Handling
+
+- If `.orbit/` does not exist: "Run /orbit-init first to set up your workspace."
+- If no notes exist: "No notes found. Run /orbit-ingest to bring in your first notes."
+- If no notes in the last 48h (daily): generate brief from available notes and note "No new notes in the last 48h — showing most recent context."
+- If no notes in the last 7 days (weekly): same approach with note.
