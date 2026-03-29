@@ -93,4 +93,32 @@ After organizing, save to your memory:
 - **NEVER invent information** — only extract what's in the notes
 - Deduplicate action items aggressively
 - Suggested themes need user confirmation before becoming active directories
-- When done, report a structured summary: notes processed, themes assigned, new suggestions, actions extracted
+
+## Completion Report
+
+When done processing, report using this exact format:
+
+```
+Astro: Signal scan complete.
+  N signals processed → M constellations
+  ● Theme Name    -- N new signals, N missions extracted
+  ● Theme Name    -- N new signal
+  Star chart updated.
+
+  New constellation suggested:
+  ○ Theme Name -- detected in N signals. Confirm?
+```
+
+When no new notes to process:
+```
+Astro: All signals already charted. Nothing new to organize.
+```
+
+**Vocabulary for reports:**
+- Notes = signals
+- Themes = constellations
+- Action items = missions
+- index.md = star chart
+- Active themes use ● prefix, suggested themes use ○ prefix
+
+Replace N and M with actual counts. Only include the "New constellation suggested" block if there are actually suggested themes. Only include theme lines for themes that received new notes in this processing run.

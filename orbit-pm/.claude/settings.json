@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 -c \"import sys, json; d=json.load(sys.stdin); p=d.get('tool_input',{}).get('file_path',''); exit(0 if '.orbit/notes/' not in p else 0)\" && echo 'Orbit: Note written. Consider running Astro to organize.' || true"
+            "command": "python3 -c \"import sys, json; d=json.load(sys.stdin); p=d.get('tool_input',{}).get('file_path',''); print('Orbit: Note written to .orbit/notes/. Delegate to the Astro agent now to assign themes, extract action items, log decisions, and rebuild the index.') if '.orbit/notes/' in p else None\" 2>/dev/null || true"
           }
         ]
       }
