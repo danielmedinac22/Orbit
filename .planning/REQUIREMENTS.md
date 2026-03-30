@@ -64,17 +64,17 @@
 
 ### Meeting Prep
 
-- [ ] **PREP-01**: `/orbit-prep <topic>` gathers context relevant to meeting topic from notes and themes
-- [ ] **PREP-02**: For named attendees, pulls their action items, recent mentions, open questions
-- [ ] **PREP-03**: Generates suggested agenda, talking points, risk areas, and decisions needed
-- [ ] **PREP-04**: Optionally writes to `.orbit/briefs/prep-YYYY-MM-DD-topic.md`
+- [x] **PREP-01**: `/orbit-prep <topic>` gathers context relevant to meeting topic from notes and themes
+- [x] **PREP-02**: For named attendees, pulls their action items, recent mentions, open questions
+- [x] **PREP-03**: Generates suggested agenda, talking points, risk areas, and decisions needed
+- [x] **PREP-04**: Optionally writes to `.orbit/briefs/prep-YYYY-MM-DD-topic.md`
 
 ### Artifacts
 
-- [ ] **ARTF-01**: `/orbit-artifact <template>` reads template from `.orbit/templates/` and generates document
-- [ ] **ARTF-02**: Gathers context from notes, action items, decisions for specified theme (or all themes)
-- [ ] **ARTF-03**: Handles versioning: detects existing artifact, creates -v2, -v3
-- [ ] **ARTF-04**: 5 built-in templates: PRD, Decision Record, Weekly Summary, Stakeholder Update, RICE Scorecard
+- [x] **ARTF-01**: `/orbit-artifact <template>` reads template from `.orbit/templates/` and generates document
+- [x] **ARTF-02**: Gathers context from notes, action items, decisions for specified theme (or all themes)
+- [x] **ARTF-03**: Handles versioning: detects existing artifact, creates -v2, -v3
+- [x] **ARTF-04**: 5 built-in templates: PRD, Decision Record, Weekly Summary, Stakeholder Update, RICE Scorecard
 
 ### Branding
 
@@ -168,14 +168,14 @@
 | DCSN-02 | Phase 3 - Intelligence Skills | Pending |
 | DCSN-03 | Phase 3 - Intelligence Skills | Pending |
 | DCSN-04 | Phase 3 - Intelligence Skills | Pending |
-| PREP-01 | Phase 3 - Intelligence Skills | Pending |
-| PREP-02 | Phase 3 - Intelligence Skills | Pending |
-| PREP-03 | Phase 3 - Intelligence Skills | Pending |
-| PREP-04 | Phase 3 - Intelligence Skills | Pending |
-| ARTF-01 | Phase 3 - Intelligence Skills | Pending |
-| ARTF-02 | Phase 3 - Intelligence Skills | Pending |
-| ARTF-03 | Phase 3 - Intelligence Skills | Pending |
-| ARTF-04 | Phase 3 - Intelligence Skills | Pending |
+| PREP-01 | Phase 3 - Intelligence Skills | Complete |
+| PREP-02 | Phase 3 - Intelligence Skills | Complete |
+| PREP-03 | Phase 3 - Intelligence Skills | Complete |
+| PREP-04 | Phase 3 - Intelligence Skills | Complete |
+| ARTF-01 | Phase 3 - Intelligence Skills | Complete |
+| ARTF-02 | Phase 3 - Intelligence Skills | Complete |
+| ARTF-03 | Phase 3 - Intelligence Skills | Complete |
+| ARTF-04 | Phase 3 - Intelligence Skills | Complete |
 | DOCS-01 | Phase 4 - Documentation | Pending |
 | DOCS-02 | Phase 4 - Documentation | Pending |
 | DOCS-03 | Phase 4 - Documentation | Pending |
