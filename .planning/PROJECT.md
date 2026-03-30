@@ -23,13 +23,14 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 - ✓ Automatic organization (Astro agent) — theme assignment, action extraction, decision logging, index rebuild, auto-triggered via hook — Validated in Phase 2
 - ✓ Engin agent with persistent memory — 7 capabilities, cited sources, fact-type labeling, advisor voice — Validated in Phase 2
 
+- ✓ Daily/weekly briefing (`/orbit-brief`) — morning brief with overdue items first, key updates by theme, stalled decisions in Drifting section — Validated in Phase 3
+- ✓ RICE prioritization (`/orbit-priorities`) — score features using meeting evidence, PM override with asterisk/gut-call labeling, Challenge section — Validated in Phase 3
+- ✓ Decision tracking (`/orbit-decisions`) — contradictions, reversals (distinct section), stalled (7-day threshold), resolution suggestions — Validated in Phase 3
+- ✓ Meeting preparation (`/orbit-prep`) — topic research, attendee context from participants: field, agenda, talking points, optional save — Validated in Phase 3
+- ✓ Artifact generation (`/orbit-artifact`) — template-based with dual context path, versioning (-v2/-v3), 5 templates — Validated in Phase 3
+
 ### Active
 
-- [ ] Daily/weekly briefing (`/orbit-brief`) — morning brief with overdue items, key updates, open questions
-- [ ] RICE prioritization (`/orbit-priorities`) — score features/initiatives using real meeting evidence
-- [ ] Decision tracking (`/orbit-decisions`) — audit decisions: find contradictions, stalled, reversals
-- [ ] Meeting preparation (`/orbit-prep`) — gather context per attendee, generate talking points, suggested agenda
-- [ ] Artifact generation (`/orbit-artifact`) — generate PRDs, decision records, summaries from templates + context
 - [ ] README — install instructions, quick start, Granola setup, skill reference, Engin capabilities
 
 ### Out of Scope
@@ -70,4 +71,4 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 | Level 1 branding (spatial experience, clear names) | PM must understand skills without reading docs; spatial flavor in messages | — Pending |
 
 ---
-*Last updated: 2026-03-29 after Phase 2 completion — ingestion pipeline, Astro auto-delegation hook, navigator voice, Engin advisor vocabulary all verified*
+*Last updated: 2026-03-30 after Phase 3 completion — all 5 intelligence skills verified (brief, priorities, decisions, prep, artifact), 19/19 requirements passed*
