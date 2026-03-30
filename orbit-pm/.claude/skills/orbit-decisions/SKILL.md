@@ -52,8 +52,14 @@ Identify conflicting decisions on the same topic:
 ## ⚠️ Coordinate Conflicts
 **[Conflict title]**
 - [Date, Meeting]: "[decision text]"
-- [Later date, Meeting]: "[conflicting decision text]"
+- [Date, Meeting]: "[conflicting decision text]"
 → [Why these conflict — what needs resolution]
+
+## ↺ Reversal Detected
+**[Decision topic]**
+- [Earlier date, Meeting]: "[original decision]"
+- [Later date, Meeting]: "[new decision that overturns the above]"
+→ Confirm: was this reversal intentional? If yes, update the original decision status in the log.
 
 ## ⏸ Uncharted Coordinates
 **[Decision topic]** — [issue raised date], [meeting]. No owner. No action items.
@@ -65,7 +71,8 @@ Identify conflicting decisions on the same topic:
 ```
 
 ### Section rules:
-- **"⚠️ Coordinate Conflicts"**: explicit contradictions and unacknowledged reversals, cite both conflicting sources
+- **"⚠️ Coordinate Conflicts"**: explicit contradictions — two active decisions on the same topic that cannot both be true, cite both conflicting sources
+- **"↺ Reversal Detected"**: a later meeting overturned an earlier decision without explicit acknowledgment — distinct from contradictions (which are two active conflicting positions). Ask PM to confirm if the reversal was intentional.
 - **"⏸ Uncharted Coordinates"**: stalled decisions — confirmed but no action items followed within 7 days, OR questions raised 3+ times without resolution
 - **"✓ Stable Coordinates"**: healthy decisions — confirmed, action items created, no conflict
 - If a section has no entries, omit it
@@ -87,7 +94,8 @@ After displaying the audit:
 ```
 Coordinate Audit complete.
 
-  ⚠️ N conflict found — [brief description]
+  ⚠️ N conflicts found — [brief description]
+  ↺ N reversals detected — [brief description]
   ⏸ N uncharted — [brief description]
   ✓ N stable coordinates
 

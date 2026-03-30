@@ -44,9 +44,9 @@
 
 ### Briefs
 
-- [ ] **BREF-01**: `/orbit-brief` generates daily briefing: overdue items first, key updates by theme, pending actions, open questions
-- [ ] **BREF-02**: `/orbit-brief weekly` generates weekly summary: theme progress, decision velocity, action burndown
-- [ ] **BREF-03**: Briefs written to `.orbit/briefs/YYYY-MM-DD.md` AND displayed in conversation
+- [x] **BREF-01**: `/orbit-brief` generates daily briefing: overdue items first, key updates by theme, pending actions, open questions
+- [x] **BREF-02**: `/orbit-brief weekly` generates weekly summary: theme progress, decision velocity, action burndown
+- [x] **BREF-03**: Briefs written to `.orbit/briefs/YYYY-MM-DD.md` AND displayed in conversation
 
 ### Prioritization
 
@@ -57,10 +57,10 @@
 
 ### Decision Tracking
 
-- [ ] **DCSN-01**: `/orbit-decisions` reviews full decision log from `.orbit/decisions/log.md`
-- [ ] **DCSN-02**: Detects stalled decisions: confirmed but no action items followed within 7 days
-- [ ] **DCSN-03**: Detects contradictions: conflicting decisions across different meetings
-- [ ] **DCSN-04**: Suggests resolution actions ("Schedule a 15-min call to lock these coordinates")
+- [x] **DCSN-01**: `/orbit-decisions` reviews full decision log from `.orbit/decisions/log.md`
+- [x] **DCSN-02**: Detects stalled decisions: confirmed but no action items followed within 7 days
+- [x] **DCSN-03**: Detects contradictions: conflicting decisions across different meetings
+- [x] **DCSN-04**: Suggests resolution actions ("Schedule a 15-min call to lock these coordinates")
 
 ### Meeting Prep
 
@@ -157,17 +157,17 @@
 | BRND-02 | Phase 2 - Ingestion + Agents | Complete |
 | BRND-03 | Phase 2 - Ingestion + Agents | Complete |
 | BRND-04 | Phase 2 - Ingestion + Agents | Complete |
-| BREF-01 | Phase 3 - Intelligence Skills | Pending |
-| BREF-02 | Phase 3 - Intelligence Skills | Pending |
-| BREF-03 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-01 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-02 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-03 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-04 | Phase 3 - Intelligence Skills | Pending |
-| DCSN-01 | Phase 3 - Intelligence Skills | Pending |
-| DCSN-02 | Phase 3 - Intelligence Skills | Pending |
-| DCSN-03 | Phase 3 - Intelligence Skills | Pending |
-| DCSN-04 | Phase 3 - Intelligence Skills | Pending |
+| BREF-01 | Phase 3 - Intelligence Skills | Complete |
+| BREF-02 | Phase 3 - Intelligence Skills | Complete |
+| BREF-03 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-01 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-02 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-03 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-04 | Phase 3 - Intelligence Skills | Complete |
+| DCSN-01 | Phase 3 - Intelligence Skills | Complete |
+| DCSN-02 | Phase 3 - Intelligence Skills | Complete |
+| DCSN-03 | Phase 3 - Intelligence Skills | Complete |
+| DCSN-04 | Phase 3 - Intelligence Skills | Complete |
 | PREP-01 | Phase 3 - Intelligence Skills | Complete |
 | PREP-02 | Phase 3 - Intelligence Skills | Complete |
 | PREP-03 | Phase 3 - Intelligence Skills | Complete |

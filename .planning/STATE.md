@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
 stopped_at: Completed 03-03-PLAN.md
-last_updated: "2026-03-30T12:01:54.064Z"
+last_updated: "2026-03-30T12:06:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 2
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-28)
 ## Current Position
 
 Phase: 03 (intelligence-skills) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -54,6 +54,8 @@ Plan: 2 of 3
 | Phase 01-foundation P06 | 4 | 2 tasks | 1 files |
 | Phase 02-ingestion-agents P01 | 9 | 2 tasks | 2 files |
 | Phase 02-ingestion-agents P02 | 37 | 2 tasks | 1 files |
+| Phase 03-intelligence-skills P01 | 4 | 2 tasks | 2 files |
+| Phase 03-intelligence-skills P02 | 3 | 2 tasks | 2 files |
 | Phase 03-intelligence-skills P03 | 8 | 2 tasks | 0 files |
 
 ## Accumulated Context
@@ -89,6 +91,9 @@ Recent decisions affecting current work:
 - [Phase 02-ingestion-agents]: 02-01: install.sh requires no logic changes — upgraded settings.json is shipped automatically via ORBIT_SETTINGS reference
 - [Phase 02-ingestion-agents]: engin.md BRND-02 patch: added drifting/coordinates vocabulary rules to Communication Rules — BRND-02 requires both spatial terms to be explicit in engin.md
 - [Phase 02-ingestion-agents]: orbit-ingest, astro.md, orbit-status required no changes — Phase 1 files were already complete against all INGS, ASTR, ENGN, and BRND requirements
+- [Phase 03-01]: D-01 gap was in output format example only — section rule already covered stalled decisions; added stalled decision entry to Drifting block in Daily Brief Output Format
+- [Phase 03-01]: D-08 fix requires three consistent changes: new Reversal Detected output section, new section rule bullet, updated Completion Message reversal count
+- [Phase 03-02]: orbit-priorities patched with PM Score Overrides section (D-05 gap); rice-scorecard template updated with asterisk override notation
 - [Phase 03-intelligence-skills]: orbit-prep SKILL.md already fully implements PREP-01/02/03/04 with no gaps — clean pass, zero patches needed
 - [Phase 03-intelligence-skills]: orbit-artifact SKILL.md already fully implements ARTF-01/02/03/04 with no gaps — clean pass, zero patches needed
 - [Phase 03-intelligence-skills]: All 4 remaining templates already have correct frontmatter, HTML comment guides, and {variable} placeholders
@@ -103,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T12:01:54.062Z
+Last session: 2026-03-30T12:06:00.000Z
 Stopped at: Completed 03-03-PLAN.md
 Resume file: None
