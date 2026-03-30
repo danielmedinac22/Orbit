@@ -35,6 +35,10 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 | 2 | | | | | | | |
 | 3 | | | | | | | |
 
+<!-- If a PM overrides a score, mark with * and add footnote below -->
+<!-- Example: | 2 | Feature B* | 7 | 10 | 5 | 2 | 175 | PM override — gut call | -->
+<!-- Footnote: * PM override: [dimension] adjusted from [evidence score] to [PM score]. Gut call. -->
+
 ---
 
 ## Analysis
@@ -52,6 +56,14 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 | Initiative | Source Note | Date | Dimension |
 |-----------|-------------|------|-----------|
 | | | | |
+
+## Overrides
+
+<!-- Fill with: Any PM score overrides applied during this analysis. Each override notes the dimension, original evidence-based score, PM's override score, and whether it's labeled "gut call" or "evidence-based". If no overrides, omit this section. -->
+
+| Initiative | Dimension | Evidence Score | PM Score | Label |
+|-----------|-----------|----------------|----------|-------|
+| | | | | |
 
 ---
 *From {note_count} notes and {action_count} active missions*
