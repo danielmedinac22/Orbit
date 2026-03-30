@@ -56,7 +56,7 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 
 - **No code:** The entire product is markdown files — skills, agents, templates, install script. No TypeScript, no build step, no package.json.
 - **Claude Code only:** MVP targets Claude Code exclusively. Multi-platform comes in v0.3.
-- **Repo location:** Built at `/Users/equipo/Orbit/orbit-pm/` as a publishable subdirectory.
+- **Repo location:** Root of the Orbit repo is the publishable product (skills, agents, templates, install.sh at top level).
 - **Branding:** Level 1 — clear skill names (orbit-ingest, orbit-brief), spatial experience in agent messages and terminal output. See `mvp/06-BRANDING.md`.
 
 ## Key Decisions
