@@ -50,6 +50,7 @@ Always read these files first:
 ## ⚠️ Drifting
 - **[Person]**: [action item] — [X] days overdue
 - Coordinate needed: [open question] (open since [date])
+- ⏸ **[Decision topic]**: confirmed [date] — no action items after [N] days ([meeting])
 
 ## Signals from the last 48h
 ### [Theme Name]
@@ -73,7 +74,7 @@ Always read these files first:
 ```
 
 ### Section rules:
-- **"⚠️ Drifting"**: overdue action items (most overdue first) + stalled decisions needing a call
+- **"⚠️ Drifting"**: overdue action items (most overdue first) + stalled decisions (confirmed but no follow-up action items within 7 days), ordered by severity
 - **"Signals from the last 48h"**: grouped by theme, cite source note and date for each
 - **"Active Missions"**: all pending action items, group by theme, flag OVERDUE items in brackets
 - **"Open Coordinates"**: unresolved questions from note frontmatter, cite where they were raised
