@@ -12,9 +12,9 @@ Orbit ships as four natural delivery boundaries. Phase 1 lays the workspace foun
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Install script, CLAUDE.md, orbit-init, and orbit-status stand up a working workspace
-- [ ] **Phase 2: Ingestion + Agents** - Notes flow in from all sources, Astro auto-organizes them, Engin answers questions
-- [ ] **Phase 3: Intelligence Skills** - Briefs, prioritization, decision tracking, meeting prep, and artifact generation
+- [x] **Phase 1: Foundation** - Install script, CLAUDE.md, orbit-init, and orbit-status stand up a working workspace
+- [x] **Phase 2: Ingestion + Agents** - Notes flow in from all sources, Astro auto-organizes them, Engin answers questions
+- [x] **Phase 3: Intelligence Skills** - Briefs, prioritization, decision tracking, meeting prep, and artifact generation
 - [ ] **Phase 4: Documentation** - README makes Orbit self-explaining and publishable on GitHub
 
 ## Phase Details
@@ -32,12 +32,12 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 6 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Repo scaffold: CLAUDE.md, LICENSE, README placeholder, settings.json with PostToolUse hook
-- [ ] 01-02-PLAN.md — Agent definitions: astro.md and engin.md with full system prompts
-- [ ] 01-03-PLAN.md — Artifact templates: 5 PM document templates (prd, decision-record, weekly-summary, stakeholder-update, rice-scorecard)
-- [ ] 01-04-PLAN.md — Core skills: orbit-init (workspace setup) and orbit-status (workspace overview)
-- [ ] 01-05-PLAN.md — Remaining skills: orbit-ingest, orbit-brief, orbit-priorities, orbit-decisions, orbit-prep, orbit-artifact
-- [ ] 01-06-PLAN.md — install.sh: one-command installer with idempotent merge and smoke test
+- [x] 01-01-PLAN.md — Repo scaffold: CLAUDE.md, LICENSE, README placeholder, settings.json with PostToolUse hook
+- [x] 01-02-PLAN.md — Agent definitions: astro.md and engin.md with full system prompts
+- [x] 01-03-PLAN.md — Artifact templates: 5 PM document templates (prd, decision-record, weekly-summary, stakeholder-update, rice-scorecard)
+- [x] 01-04-PLAN.md — Core skills: orbit-init (workspace setup) and orbit-status (workspace overview)
+- [x] 01-05-PLAN.md — Remaining skills: orbit-ingest, orbit-brief, orbit-priorities, orbit-decisions, orbit-prep, orbit-artifact
+- [x] 01-06-PLAN.md — install.sh: one-command installer with idempotent merge and smoke test
 
 ### Phase 2: Ingestion + Agents
 **Goal**: Notes arrive from any source, get automatically organized into themes with action items and decisions extracted, and Engin can answer PM questions from that context
@@ -64,8 +64,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Verify and patch orbit-brief and orbit-decisions (D-01 stalled decisions in Drifting, D-08 distinct reversal callout)
-- [ ] 03-02-PLAN.md — Verify and patch orbit-priorities and rice-scorecard template (D-05 gut-call override with asterisk notation)
+- [x] 03-01-PLAN.md — Verify and patch orbit-brief and orbit-decisions (D-01 stalled decisions in Drifting, D-08 distinct reversal callout)
+- [x] 03-02-PLAN.md — Verify and patch orbit-priorities and rice-scorecard template (D-05 gut-call override with asterisk notation)
 - [x] 03-03-PLAN.md — Verify orbit-prep, orbit-artifact, and 4 remaining templates (clean verification pass)
 
 ### Phase 4: Documentation
@@ -85,7 +85,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 5/6 | In Progress|  |
-| 2. Ingestion + Agents | 0/TBD | Not started | - |
-| 3. Intelligence Skills | 1/3 | In Progress|  |
+| 1. Foundation | 6/6 | Complete | 2026-03-29 |
+| 2. Ingestion + Agents | 2/2 | Complete | 2026-03-29 |
+| 3. Intelligence Skills | 3/3 | Complete | 2026-03-30 |
 | 4. Documentation | 0/TBD | Not started | - |
