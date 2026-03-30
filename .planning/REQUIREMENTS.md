@@ -50,10 +50,10 @@
 
 ### Prioritization
 
-- [ ] **PRIO-01**: `/orbit-priorities` identifies candidate features/initiatives from notes and themes
-- [ ] **PRIO-02**: Scores each candidate using RICE dimensions with evidence from meetings (Reach, Impact, Confidence, Effort)
-- [ ] **PRIO-03**: Generates ranked scorecard artifact at `.orbit/artifacts/rice-scorecard-YYYY-MM-DD.md`
-- [ ] **PRIO-04**: Challenges PM when data contradicts assumptions ("You rated X high but it hasn't come up in 3 weeks")
+- [x] **PRIO-01**: `/orbit-priorities` identifies candidate features/initiatives from notes and themes
+- [x] **PRIO-02**: Scores each candidate using RICE dimensions with evidence from meetings (Reach, Impact, Confidence, Effort)
+- [x] **PRIO-03**: Generates ranked scorecard artifact at `.orbit/artifacts/rice-scorecard-YYYY-MM-DD.md`
+- [x] **PRIO-04**: Challenges PM when data contradicts assumptions ("You rated X high but it hasn't come up in 3 weeks")
 
 ### Decision Tracking
 
@@ -160,10 +160,10 @@
 | BREF-01 | Phase 3 - Intelligence Skills | Pending |
 | BREF-02 | Phase 3 - Intelligence Skills | Pending |
 | BREF-03 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-01 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-02 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-03 | Phase 3 - Intelligence Skills | Pending |
-| PRIO-04 | Phase 3 - Intelligence Skills | Pending |
+| PRIO-01 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-02 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-03 | Phase 3 - Intelligence Skills | Complete |
+| PRIO-04 | Phase 3 - Intelligence Skills | Complete |
 | DCSN-01 | Phase 3 - Intelligence Skills | Pending |
 | DCSN-02 | Phase 3 - Intelligence Skills | Pending |
 | DCSN-03 | Phase 3 - Intelligence Skills | Pending |
