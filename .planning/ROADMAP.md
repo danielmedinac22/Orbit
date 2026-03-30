@@ -61,7 +61,12 @@ Plans:
   3. Running `/orbit-decisions` flags stalled decisions (confirmed but no follow-on actions within 7 days), contradictions across meetings, and suggests resolution actions
   4. Running `/orbit-prep <topic>` gathers relevant context, generates agenda, talking points, and risk areas, optionally writing to `.orbit/briefs/prep-YYYY-MM-DD-topic.md`
   5. Running `/orbit-artifact <template>` generates a document from one of 5 built-in templates (PRD, Decision Record, Weekly Summary, Stakeholder Update, RICE Scorecard), handles versioning (-v2, -v3), and every skill completion message suggests the logical next step
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Verify and patch orbit-brief and orbit-decisions (D-01 stalled decisions in Drifting, D-08 distinct reversal callout)
+- [ ] 03-02-PLAN.md — Verify and patch orbit-priorities and rice-scorecard template (D-05 gut-call override with asterisk notation)
+- [ ] 03-03-PLAN.md — Verify orbit-prep, orbit-artifact, and 4 remaining templates (clean verification pass)
 
 ### Phase 4: Documentation
 **Goal**: The README makes Orbit self-explaining to a technical PM landing on the GitHub repo — they know what it does, how to install it, how to use every skill, and what to ask Engin, without reading any other file
@@ -82,5 +87,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/6 | In Progress|  |
 | 2. Ingestion + Agents | 0/TBD | Not started | - |
-| 3. Intelligence Skills | 0/TBD | Not started | - |
+| 3. Intelligence Skills | 0/3 | Not started | - |
 | 4. Documentation | 0/TBD | Not started | - |
