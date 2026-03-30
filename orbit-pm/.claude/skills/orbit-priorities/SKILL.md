@@ -51,7 +51,9 @@ Running RICE analysis against N signals and N active missions...
 |---|-----------|---|---|---|---|-------|----------|
 | 1 | [name] | 8 | 9 | 9 | 3 | 216 | [meeting, date]; [meeting, date] |
 | 2 | [name] | 6 | 10 | 7 | 2 | 210 | [meeting, date] |
-| 3 | [name] | 5 | 7 | 5 | 8 | 22 | [meeting, date] |
+| 3 | [name]* | 5 | 7 | 5 | 8 | 22 | PM override — gut call |
+
+*\* PM override: Impact adjusted from 4 to 7. Gut call.*
 
 ## Analysis
 
@@ -66,6 +68,19 @@ Examples:
 - "You've discussed X in N meetings but pushed its timeline twice. Is this really a priority or should it be formally descoped?"
 - "Security audit scores high-urgency but it's been assigned to one person with no backup. This is a single point of failure."
 ```
+
+## PM Score Overrides
+
+If the PM provides their own scores or overrides Engin's evidence-based scores:
+
+1. Apply the PM's override to the scorecard
+2. Mark the initiative with `*` (asterisk) in the scorecard table
+3. Add a footnote at the bottom of the Scorecard section: `* PM override: [dimension] adjusted from [evidence score] to [PM score]. Marked as gut call.`
+4. In the Challenge section, acknowledge the override: "You overrode the [dimension] score for [initiative] — noted as gut call. Watch for signals that confirm or contradict."
+
+Override labels:
+- **Evidence-based**: score derived from meeting evidence (default — no marker)
+- **Gut call**: PM override without supporting meeting data (marked with `*`)
 
 ### Scoring rules:
 - All scores based on actual meeting evidence — never invent or assume
