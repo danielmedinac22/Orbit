@@ -21,21 +21,60 @@ If `.orbit/config.md` does not exist, continue to Step 1.
 
 ---
 
-## Step 1 — Ask One Freeform Question
+## Step 1 — Welcome + Context Question
 
-Ask the user ONE question covering all the context you need. Do not ask multiple separate questions. Use this exact phrasing:
+Display this welcome message, then ask for context. Output this exactly (adapt language if needed — see language detection below):
 
-> "To set up your Orbit workspace, I need a bit of context. Tell me: What's your name and role? What company are you at and what projects are you working on? What are your main goals this quarter? Who are your key stakeholders?"
+```
+◉ Bienvenido a Orbit — tu Copiloto de Contexto.
+
+Voy a ser tu segunda memoria para reuniones, decisiones y tareas pendientes.
+Capturo señales de tus meetings, las organizo en temas, y te doy briefings
+para que nada se te escape.
+
+💡 Pro tip: Si usas herramientas como Wispr Flow o Granola para transcribir,
+Orbit funciona mejor entre más detalle tengan tus notas.
+
+Para armar tu workspace, cuéntame:
+- ¿Cuál es tu nombre y rol?
+- ¿En qué empresa y proyectos trabajas?
+- ¿Cuáles son tus objetivos principales este trimestre?
+- ¿Quiénes son tus stakeholders clave?
+```
 
 Wait for the user's response before continuing.
 
-**Language detection:** Detect the language of the user's response. If they respond in Spanish, conduct all subsequent messages in Spanish (except YAML field names and file content structure, which stay in English). Apply this to any language — the workspace should feel native to the user.
+**Language detection:** Detect the language of the user's response. If they respond in English, switch all subsequent messages to English. If they respond in Spanish or any other language, conduct all subsequent messages in that language. YAML field names and file structure always stay in English.
+
+**English version of the welcome (use if prior conversation context indicates the user communicates in English):**
+
+```
+◉ Welcome to Orbit — your Context Copilot.
+
+I'll be your second brain for meetings, decisions, and action items.
+I capture signals from your meetings, organize them into themes, and give you
+briefings so nothing falls through the cracks.
+
+💡 Pro tip: If you use tools like Wispr Flow or Granola for transcription,
+Orbit works best when your notes have maximum detail.
+
+To set up your workspace, tell me:
+- What's your name and role?
+- What company are you at, and what are you working on?
+- What are your main goals this quarter?
+- Who are your key stakeholders?
+```
 
 ---
 
-## Step 2 — Write config.md
+## Step 2 — Warm Acknowledgment + Write config.md
 
-Parse the user's response and extract: name, role, company, projects, goals, and key stakeholders.
+After the user responds, first output a warm acknowledgment using their name:
+
+- Spanish: `¡Listo, [Name]! Vamos a armar tu estación de trabajo.`
+- English: `Got it, [Name]! Let's build your workspace.`
+
+Then parse the user's response and extract: name, role, company, projects, goals, and key stakeholders.
 
 Write `.orbit/config.md` with this exact structure:
 
@@ -45,7 +84,6 @@ name: [extracted name]
 role: [extracted role]
 company: [extracted company]
 projects: [Project 1, Project 2, Project 3]
-max_themes: 5
 language: auto
 brief_style: concise
 ---
@@ -63,11 +101,13 @@ Use YAML array syntax for `projects`. If the user lists multiple projects, inclu
 
 ---
 
-## Step 3 — Create .orbit/ Directory Structure
+## Step 3 — Create .orbit/ Directory Structure (with context)
 
-Create all the required files and directories using the Write tool. This builds the full workspace tree.
+Create all required files using the Write tool. **As you create each file, output a brief explanation of what it does** so the user understands their workspace.
 
-**Create `.orbit/action-items/pending.md`:**
+**Create `.orbit/action-items/pending.md`** and output:
+> "Creando tu tracker de tareas — yo me encargo de traer las tareas de tus reuniones aquí. No necesitas revisarlo manualmente."
+> (EN: "Creating your task tracker — I'll pull action items from your meetings automatically. You won't need to check this manually.")
 
 ```
 # Pending Action Items
@@ -76,7 +116,9 @@ Create all the required files and directories using the Write tool. This builds 
 |------|-------|-----|-------|--------|
 ```
 
-**Create `.orbit/decisions/log.md`:**
+**Create `.orbit/decisions/log.md`** and output:
+> "Creando tu log de decisiones — cada decisión de tus meetings queda registrada con su fuente. Te aviso si hay contradicciones."
+> (EN: "Creating your decision log — every decision from your meetings gets tracked with its source. I'll flag contradictions automatically.")
 
 ```
 # Decision Log
@@ -85,7 +127,9 @@ Create all the required files and directories using the Write tool. This builds 
 |------|----------|--------|-------|--------|
 ```
 
-**Create `.orbit/index.md`** (use today's actual date):
+**Create `.orbit/index.md`** (use today's actual date) and output:
+> "Creando tu índice de conocimiento — Astro lo reconstruye cada vez que llegan notas nuevas."
+> (EN: "Creating your knowledge index — Astro rebuilds it every time new notes come in.")
 
 ```
 # Orbit Knowledge Index
@@ -99,30 +143,30 @@ Create all the required files and directories using the Write tool. This builds 
 *Run /orbit-ingest to bring in your first notes. Astro will build this index.*
 ```
 
-**Create placeholder files to establish directories:**
+**Create placeholder files** and output:
+> "Preparando el resto del workspace — themes/, briefs/ y artifacts/ se llenan conforme uses Orbit."
+> (EN: "Preparing the rest of your workspace — themes/, briefs/ and artifacts/ fill up as you use Orbit.")
+
 - `.orbit/themes/_suggested/.gitkeep` (empty file)
 - `.orbit/briefs/.gitkeep` (empty file)
 - `.orbit/artifacts/.gitkeep` (empty file)
 
-These empty files create the required directory structure for orbit-status to work correctly.
+**Important:** Output the explanation message BEFORE or AS you create each file, not batched at the end. Use only the language detected in Step 1 (don't show both languages).
 
 ---
 
-## Step 4 — Copy Templates
+## Step 4 — Verify Templates
 
-Copy the 5 built-in templates from `./templates/` to `.orbit/templates/`. Read each source file and write it to the destination:
+Check if `.orbit/templates/` exists and contains `.md` files using Glob.
 
-- `./templates/prd.md` → `.orbit/templates/prd.md`
-- `./templates/decision-record.md` → `.orbit/templates/decision-record.md`
-- `./templates/weekly-summary.md` → `.orbit/templates/weekly-summary.md`
-- `./templates/stakeholder-update.md` → `.orbit/templates/stakeholder-update.md`
-- `./templates/rice-scorecard.md` → `.orbit/templates/rice-scorecard.md`
-
-If `./templates/` is not found in the current directory, check the parent directory. The templates are installed by install.sh alongside the skills.
+- If templates exist: continue silently (no output needed).
+- If templates are missing: read from `./templates/` and copy them to `.orbit/templates/` as a fallback. If `./templates/` is not found, check the parent directory.
 
 ---
 
 ## Step 5 — Write Sample Note
+
+Output: "Escribiendo una nota de ejemplo para que veas Orbit en acción..." (EN: "Writing a sample note so you can see Orbit in action...")
 
 Write a realistic PM meeting note to `.orbit/notes/`. Use yesterday's date for the filename.
 
@@ -195,34 +239,34 @@ Build the detected MCPs list based on what is actually available to you right no
 
 ## Step 7 — Report Completion
 
-Output the completion message, adapting the Detected line based on your MCP detection results:
+Output the completion message in the detected language:
 
-When MCPs are detected:
-
+**Spanish:**
 ```
-◉ Orbit station online.
+◉ Orbit está listo.
 
-  Workspace: .orbit/
-  Config:    .orbit/config.md
-  Blueprints: 5 templates loaded
+  Workspace:  .orbit/
+  Config:     .orbit/config.md
+  Templates:  5 blueprints listos
+  Ejemplo:    1 nota de muestra cargada
 
-  Detected: Granola MCP, Slack MCP
+  Detected: [MCP list, or "Sin MCPs — usa /orbit-ingest con archivos o paste"]
 
-  Next: /orbit-ingest to capture your first signals.
+  ¿Siguiente paso? /orbit-ingest para traer tus reuniones reales.
 ```
 
-When no MCPs are detected:
-
+**English:**
 ```
-◉ Orbit station online.
+◉ Orbit is ready.
 
-  Workspace: .orbit/
-  Config:    .orbit/config.md
-  Blueprints: 5 templates loaded
+  Workspace:  .orbit/
+  Config:     .orbit/config.md
+  Templates:  5 blueprints ready
+  Sample:     1 example note loaded
 
-  Detected: No MCPs detected — use /orbit-ingest to import from files or paste
+  Detected: [MCP list, or "No MCPs — use /orbit-ingest with files or paste"]
 
-  Next: Run /orbit-ingest and choose 'file' or 'paste' to import your first notes.
+  Next up? /orbit-ingest to bring in your real meetings.
 ```
 
 ---
@@ -231,6 +275,5 @@ When no MCPs are detected:
 
 - The `config.md already exists` check guards against accidental re-initialization and data loss
 - `themes: []` in the sample note is intentional — Astro reads this to know the note needs organizing
-- Do not use spatial language in error messages or file content — spatial terms belong in terminal output messages only
 - If the user's response is very minimal, ask a targeted follow-up before writing config.md
 - All date fields in the sample note must use real calculated dates, not placeholder text

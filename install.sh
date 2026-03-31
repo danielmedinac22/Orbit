@@ -129,7 +129,9 @@ fi
 echo "Installing templates..."
 ORBIT_TEMPLATES="$SCRIPT_DIR/templates"
 DEST_TEMPLATES="$DEST/templates"
+DEST_ORBIT_TEMPLATES="$DEST/.orbit/templates"
 
+# Copy to project root (reference copy)
 if [ -d "$DEST_TEMPLATES" ]; then
     for src_template in "$ORBIT_TEMPLATES/"*.md; do
         [ -f "$src_template" ] || continue
@@ -155,6 +157,14 @@ else
     cp -r "$ORBIT_TEMPLATES" "$DEST/"
     echo "  Installed templates/"
 fi
+
+# Pre-install into .orbit/templates/ so orbit-init doesn't need to copy them
+mkdir -p "$DEST_ORBIT_TEMPLATES"
+for src_template in "$ORBIT_TEMPLATES/"*.md; do
+    [ -f "$src_template" ] || continue
+    cp "$src_template" "$DEST_ORBIT_TEMPLATES/"
+done
+echo "  Pre-installed templates into .orbit/templates/"
 
 # ─────────────────────────────────────────────────────────
 # Section 7: Success message
