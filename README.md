@@ -43,6 +43,8 @@ The workflow is seamless: ingest a note, and Astro organizes it immediately via 
 
 ### Get started
 
+**`/orbit-help`** — See all available commands grouped by workflow stage. Includes a quick-start guide for your first session.
+
 **`/orbit-init`** — Set up your Orbit workspace. Creates the `.orbit/` directory structure and your PM profile. Run this once when starting in a new project.
 
 **`/orbit-ingest`** — Import notes into your workspace. Detects Granola, Jira, and Slack MCPs automatically and offers them as sources. Falls back to file import or paste when no MCPs are available.
@@ -69,6 +71,7 @@ The workflow is seamless: ingest a note, and Astro organizes it immediately via 
 
 | Skill | What it does | Example |
 |-------|-------------|---------|
+| `/orbit-help` | Show all commands grouped by workflow stage, with quick-start guide. | `/orbit-help` |
 | `/orbit-init` | Initialize the Orbit PM workspace. Creates `.orbit/` directory and user profile. | `/orbit-init` |
 | `/orbit-ingest` | Import notes into the Orbit workspace. MCP-first: detects Granola, Jira, Slack and offers them as sources. Fallback to file or paste. | `/orbit-ingest --granola 7` |
 | `/orbit-status` | Show Orbit workspace status — notes, themes, action items, decisions, artifacts. | `/orbit-status` |

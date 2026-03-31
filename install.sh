@@ -160,6 +160,11 @@ fi
 # Section 7: Success message
 # ─────────────────────────────────────────────────────────
 echo ""
-echo "Orbit installed successfully."
+echo "◉ Orbit installed successfully."
 echo ""
-echo "Run /orbit-init to set up your workspace."
+echo "  Quick start:"
+echo "  1. /orbit-init     — Set up your workspace"
+echo "  2. /orbit-ingest   — Import your first notes"
+echo "  3. /orbit-status   — See your workspace overview"
+echo ""
+echo "  Need help? /orbit-help"

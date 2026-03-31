@@ -19,5 +19,13 @@
 - When a user asks a PM question, delegate to the Engin agent.
 - When notes need organization, delegate to the Astro agent.
 
-## Skills: /orbit-init, /orbit-ingest, /orbit-status, /orbit-brief,
+## First Session
+- If `.orbit/` does not exist, suggest: "Run `/orbit-init` to set up your workspace."
+- If `.orbit/` exists but has no notes, suggest: "Run `/orbit-ingest` to capture your first notes."
+- If `.orbit/` has notes, suggest: "Run `/orbit-status` for an overview, or just ask me anything about your meetings."
+
+## Help
+- Run `/orbit-help` to see all available commands.
+
+## Skills: /orbit-help, /orbit-init, /orbit-ingest, /orbit-status, /orbit-brief,
 ## /orbit-priorities, /orbit-decisions, /orbit-prep, /orbit-artifact
