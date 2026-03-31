@@ -85,9 +85,9 @@
 
 ### Documentation
 
-- [ ] **DOCS-01**: README.md with: what Orbit is, install instructions, quick start, Granola setup, skill reference
-- [ ] **DOCS-02**: README shows real usage examples for each skill
-- [ ] **DOCS-03**: README documents Engin's 7 capabilities with example queries
+- [x] **DOCS-01**: README.md with: what Orbit is, install instructions, quick start, Granola setup, skill reference
+- [x] **DOCS-02**: README shows real usage examples for each skill
+- [x] **DOCS-03**: README documents Engin's 7 capabilities with example queries
 
 ## v2 Requirements
 
@@ -176,9 +176,9 @@
 | ARTF-02 | Phase 3 - Intelligence Skills | Complete |
 | ARTF-03 | Phase 3 - Intelligence Skills | Complete |
 | ARTF-04 | Phase 3 - Intelligence Skills | Complete |
-| DOCS-01 | Phase 4 - Documentation | Pending |
-| DOCS-02 | Phase 4 - Documentation | Pending |
-| DOCS-03 | Phase 4 - Documentation | Pending |
+| DOCS-01 | Phase 4 - Documentation | Complete |
+| DOCS-02 | Phase 4 - Documentation | Complete |
+| DOCS-03 | Phase 4 - Documentation | Complete |
 
 **Coverage:**
 - v1 requirements: 47 total
