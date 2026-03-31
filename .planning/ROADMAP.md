@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Install script, CLAUDE.md, orbit-init, and orbit-status stand up a working workspace
 - [x] **Phase 2: Ingestion + Agents** - Notes flow in from all sources, Astro auto-organizes them, Engin answers questions
 - [x] **Phase 3: Intelligence Skills** - Briefs, prioritization, decision tracking, meeting prep, and artifact generation
-- [ ] **Phase 4: Documentation** - README makes Orbit self-explaining and publishable on GitHub
+- [x] **Phase 4: Documentation** - README makes Orbit self-explaining and publishable on GitHub (completed 2026-03-31)
 
 ## Phase Details
 
@@ -76,7 +76,10 @@ Plans:
   1. README contains install instructions that a technical PM can follow from zero to working Orbit in under 5 minutes, including the Granola MCP setup
   2. README shows a real usage example for each of the 8 skills (`/orbit-init`, `/orbit-ingest`, `/orbit-status`, `/orbit-brief`, `/orbit-priorities`, `/orbit-decisions`, `/orbit-prep`, `/orbit-artifact`)
   3. README documents Engin's 7 capabilities with an example query for each, so a PM knows exactly what to ask without guessing
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [x] 04-01-PLAN.md — Write complete README.md: hero pitch, install (3 steps), workflow grouping, skill reference + 8 examples, Engin 7-capability table, Granola MCP setup
 
 ## Progress
 
@@ -88,4 +91,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation | 6/6 | Complete | 2026-03-29 |
 | 2. Ingestion + Agents | 2/2 | Complete | 2026-03-29 |
 | 3. Intelligence Skills | 3/3 | Complete | 2026-03-30 |
-| 4. Documentation | 0/TBD | Not started | - |
+| 4. Documentation | 1/1 | Complete   | 2026-03-31 |
