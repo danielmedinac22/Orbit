@@ -31,7 +31,11 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 
 ### Active
 
-- [ ] README — install instructions, quick start, Granola setup, skill reference, Engin capabilities
+(None — all v1 requirements validated)
+
+### Recently Validated
+
+- ✓ README — install instructions, quick start, Granola setup, skill reference, Engin capabilities — Validated in Phase 4
 
 ### Out of Scope
 
@@ -71,4 +75,4 @@ A PM can import their meetings (from Granola MCP, Jira, Slack, or manual paste),
 | Level 1 branding (spatial experience, clear names) | PM must understand skills without reading docs; spatial flavor in messages | — Pending |
 
 ---
-*Last updated: 2026-03-30 after Phase 3 completion — all 5 intelligence skills verified (brief, priorities, decisions, prep, artifact), 19/19 requirements passed*
+*Last updated: 2026-03-31 after Phase 4 completion — README.md v1.0 written and verified. All 4 phases complete. Orbit v1.0 is publishable.*
