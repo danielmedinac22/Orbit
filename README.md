@@ -23,7 +23,7 @@ The workflow is seamless: ingest a note, and Astro organizes it immediately via 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/danieljmedina/orbit.git
+   git clone https://github.com/danielmedinac22/Orbit.git
    ```
 
 2. From your project directory, run the installer:
