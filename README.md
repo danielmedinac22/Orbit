@@ -21,16 +21,12 @@ The workflow is seamless: ingest a note, and Astro organizes it immediately via 
 
 ## Install
 
-1. Clone this repository:
+1. Clone and install in one step:
    ```bash
-   git clone https://github.com/danielmedinac22/Orbit.git
+   git clone https://github.com/danielmedinac22/Orbit.git && cd Orbit && bash install.sh .
    ```
 
-2. From your project directory, run the installer:
-   ```bash
-   bash /path/to/orbit/install.sh
-   ```
-   The installer copies skills, agents, settings, CLAUDE.md, and templates into your project.
+2. **Restart Claude Code** (close and reopen) so it detects the new skills.
 
 3. Initialize your workspace:
    ```

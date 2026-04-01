@@ -1,7 +1,7 @@
 ---
 name: orbit-init
 description: Initialize the Orbit PM workspace. Creates .orbit/ directory and user profile.
-argument-hint: "[--sample to include example data]"
+argument-hint: ""
 ---
 
 You are setting up an Orbit PM workspace. Follow these steps in order.
@@ -32,6 +32,10 @@ Voy a ser tu segunda memoria para reuniones, decisiones y tareas pendientes.
 Capturo señales de tus meetings, las organizo en temas, y te doy briefings
 para que nada se te escape.
 
+Dos agentes trabajan contigo en Orbit:
+• Astro — organiza tus notas automáticamente en temas, extrae tareas y decisiones.
+• Engin — tu advisor de producto experto. Le puedes preguntar lo que sea.
+
 💡 Pro tip: Si usas herramientas como Wispr Flow o Granola para transcribir,
 Orbit funciona mejor entre más detalle tengan tus notas.
 
@@ -54,6 +58,10 @@ Wait for the user's response before continuing.
 I'll be your second brain for meetings, decisions, and action items.
 I capture signals from your meetings, organize them into themes, and give you
 briefings so nothing falls through the cracks.
+
+Two agents work with you in Orbit:
+• Astro — auto-organizes your notes into themes, extracts action items and decisions.
+• Engin — your expert product advisor. Ask it anything.
 
 💡 Pro tip: If you use tools like Wispr Flow or Granola for transcription,
 Orbit works best when your notes have maximum detail.
@@ -164,68 +172,7 @@ Check if `.orbit/templates/` exists and contains `.md` files using Glob.
 
 ---
 
-## Step 5 — Write Sample Note
-
-Output: "Escribiendo una nota de ejemplo para que veas Orbit en acción..." (EN: "Writing a sample note so you can see Orbit in action...")
-
-Write a realistic PM meeting note to `.orbit/notes/`. Use yesterday's date for the filename.
-
-**Filename format:** `YYYY-MM-DD-sprint-review.md` (use yesterday's actual date)
-
-The note MUST use this exact frontmatter structure:
-
-```
----
-title: Sprint Review — API v2 Migration
-date: [yesterday's actual date in YYYY-MM-DD]
-source: manual
-participants: [Alex, Jordan, Sam]
-themes: []
-decisions:
-  - Adopt REST over GraphQL for the v2 API to reduce client complexity
-  - Delay mobile app launch to Q2 to align with API completion
-questions:
-  - Who owns the data migration from the legacy system?
-  - Can we get an external security vendor for the audit?
-action_items:
-  - text: Draft REST API migration plan with timeline
-    owner: Alex
-    due: [today's date + 7 days]
-    status: pending
-  - text: Schedule security audit kickoff
-    owner: Jordan
-    due: [today's date + 5 days]
-    status: pending
-  - text: Update mobile app roadmap for Q2 target
-    owner: Sam
-    due: [today's date + 10 days]
-    status: pending
----
-```
-
-**Critical: `themes: []` must be empty.** Astro fills this during organization. Never pre-populate themes in notes.
-
-Follow the frontmatter with this body:
-
-```
-## Summary
-
-Sprint review covering API v2 progress, mobile app timeline, and upcoming security requirements. Team aligned on REST-first approach and Q2 mobile target.
-
-## Key Points
-
-- REST migration is 60% complete and unblocking the mobile app
-- Mobile app pushed to Q2 due to API dependency — design team notified
-- Security audit is a hard launch requirement; no vendor selected yet
-
-## Discussion Details
-
-Alex opened with the API migration update. The team confirmed REST over GraphQL after last week's spike — the reduction in client complexity outweighs the migration cost. Jordan flagged the security audit as a launch blocker that needs immediate action. Sam proposed adjusting the mobile roadmap and will communicate the Q2 target to stakeholders.
-```
-
----
-
-## Step 6 — Detect Available MCP Tools
+## Step 5 — Detect Available MCP Tools
 
 Check which MCP tools are available in this Claude Code session:
 
@@ -235,9 +182,27 @@ Check which MCP tools are available in this Claude Code session:
 
 Build the detected MCPs list based on what is actually available to you right now.
 
+**If Granola is NOT detected**, offer to install it automatically:
+
+**Spanish:**
+```
+¿Usas Granola para tus meetings? Puedo conectarlo automáticamente.
+```
+
+**English:**
+```
+Do you use Granola for your meetings? I can connect it automatically.
+```
+
+If the user says yes:
+1. Run via Bash: `claude mcp add --transport http --scope user granola "https://mcp.granola.ai/mcp"`
+2. Add Granola to the detected MCPs list with note "(requiere reinicio)" / "(requires restart)"
+
+If the user says no or skips: continue to the report.
+
 ---
 
-## Step 7 — Report Completion
+## Step 6 — Report Completion
 
 Output the completion message in the detected language:
 
@@ -248,11 +213,10 @@ Output the completion message in the detected language:
   Workspace:  .orbit/
   Config:     .orbit/config.md
   Templates:  5 blueprints listos
-  Ejemplo:    1 nota de muestra cargada
 
   Detected: [MCP list, or "Sin MCPs — usa /orbit-ingest con archivos o paste"]
 
-  ¿Siguiente paso? /orbit-ingest para traer tus reuniones reales.
+  ¿Siguiente paso? /orbit-ingest para traer tus reuniones.
 ```
 
 **English:**
@@ -262,18 +226,21 @@ Output the completion message in the detected language:
   Workspace:  .orbit/
   Config:     .orbit/config.md
   Templates:  5 blueprints ready
-  Sample:     1 example note loaded
 
   Detected: [MCP list, or "No MCPs — use /orbit-ingest with files or paste"]
 
-  Next up? /orbit-ingest to bring in your real meetings.
+  Next up? /orbit-ingest to bring in your meetings.
 ```
+
+If Granola was just installed (in Step 5), append:
+```
+  ⚠️  Reinicia Claude Code para que detecte Granola, y luego ejecuta /orbit-ingest.
+```
+(EN: "Restart Claude Code to detect Granola, then run /orbit-ingest.")
 
 ---
 
 ## Implementation Notes
 
 - The `config.md already exists` check guards against accidental re-initialization and data loss
-- `themes: []` in the sample note is intentional — Astro reads this to know the note needs organizing
 - If the user's response is very minimal, ask a targeted follow-up before writing config.md
-- All date fields in the sample note must use real calculated dates, not placeholder text

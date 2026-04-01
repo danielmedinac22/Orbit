@@ -1,2 +1,5 @@
 # GSD planning artifacts (internal only)
 .planning/
+
+# Generated status file (user-visible mirror of .orbit/index.md)
+ORBIT-STATUS.md
