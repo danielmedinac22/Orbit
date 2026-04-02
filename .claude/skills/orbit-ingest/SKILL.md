@@ -64,59 +64,56 @@ Only show Jira/Slack options if their MCPs are detected. Add them as options 2/3
 
 #### If Granola (detected):
 
-Ask two questions sequentially:
-
 **Question 1:**
 ```
 ¿De cuántos días quieres que importe? (default: 7)
 ```
 (EN: "How many days back should I import? (default: 7)")
 
-**Question 2:**
+**After Question 1 — Fetch meeting count:** Immediately call `mcp__granola__list_meetings` (or equivalent) for the specified date range. Count the results before asking Question 2.
+
+**Question 2 (data-driven recommendation):**
+
+Based on the actual meeting count N found:
+
+**If N ≤ 5 meetings — Spanish:**
 ```
+Encontré N reuniones en los últimos X días.
+
 ¿Quieres importar solo las notas, o notas + transcripciones completas?
 
-📊 Recomendación:
-- Si tienes muchas reuniones (5+/semana): solo notas — más rápido y enfocado
-- Si tienes pocas reuniones: notas + transcripciones — contexto más rico
-
-Las transcripciones completas llenan el contexto más rápido pero dan
-información más detallada para análisis.
+📊 Mi recomendación para N reuniones:
+   notas + transcripciones — son pocas reuniones, vale la pena el contexto extra
 ```
 
-(EN version:)
+**If N is 6-15 meetings — Spanish:**
 ```
-Do you want notes only, or notes + full transcriptions?
+Encontré N reuniones en los últimos X días.
 
-📊 Recommendation:
-- If you have many meetings (5+/week): notes only — faster and more focused
-- If you have fewer meetings: notes + transcriptions — richer context
+¿Quieres importar solo las notas, o notas + transcripciones completas?
 
-Full transcriptions fill context faster but give more detailed information
-for analysis.
+📊 Mi recomendación para N reuniones:
+   solo notas — con N reuniones, las transcripciones llenarían el contexto rápidamente
 ```
 
-Then call Granola MCP tools to fetch meetings for that date range.
-
-**Meeting count check:** After fetching the meeting list from Granola, count the results. If there are more than 15 meetings:
-
-**Spanish:**
+**If N > 15 meetings — Spanish:**
 ```
-Encontré N reuniones en los últimos X días. Importar todas puede tomar un rato
-y usar buena parte de esta sesión de Claude.
+Encontré N reuniones en los últimos X días. Son bastantes.
 
-¿Importo todas, o empezamos con las últimas 10?
-```
+¿Quieres importar solo las notas, o notas + transcripciones completas?
 
-**English:**
-```
-Found N meetings in the last X days. Importing all of them may take a while
-and use a significant portion of this Claude session.
+📊 Mi recomendación para N reuniones:
+   solo notas — y te sugiero empezar con las últimas 10 para no saturar el contexto
 
-Import all, or start with the most recent 10?
+¿Importo todas las N, o empezamos con las últimas 10?
 ```
 
-If the user chooses to limit, process only the most recent 10 (sorted by date descending).
+**English versions follow the same structure:**
+- ≤5: "notes + transcriptions — few enough meetings to get full context"
+- 6-15: "notes only — with N meetings, transcriptions would fill context quickly"
+- >15: "notes only — and I'd suggest starting with the most recent 10" + offer to limit
+
+If the user chooses to limit (>15 case), process only the most recent 10 (sorted by date descending).
 
 Apply the notes-only or notes+transcriptions preference (see Token Optimization section below).
 
@@ -222,134 +219,36 @@ If content exceeds approximately 5000 words and has NO existing summary:
 
 ---
 
-## Note Creation Prompt (File and Paste paths)
+## Delegation to Astro
 
-When processing raw content from file or paste (that hasn't been short-circuited by Token Optimization above), generate a structured note:
+After gathering all import parameters and fetching content from the source (Granola MCP calls, file reads, or paste content), delegate the entire note-writing and organization process to the **Astro agent**.
 
-Read `.orbit/config.md` for the user's profile and context.
+### What to pass to Astro
 
-Write the note to `.orbit/notes/YYYY-MM-DD-title.md` with this structure:
+Delegate to the Astro agent with a structured prompt containing:
 
 ```
----
-title: [descriptive title]
-date: YYYY-MM-DD
-source: file | paste
-participants: [names mentioned]
-themes: []
-decisions:
-  - [any decisions made or confirmed]
-questions:
-  - [unresolved questions raised]
-action_items:
-  - text: [task]
-    owner: [person or "unassigned"]
-    due: [date if mentioned]
-    status: pending
----
+Import and organize notes with these parameters:
 
-## Summary
-[2-3 sentence overview — scannable in 15 seconds]
+Source: [granola | file | paste | jira | slack]
+Mode: [notes-only | notes+transcriptions] (if Granola)
+Meeting count: N
+Date range: last X days
 
-## Key Points
-[Bullet points of the most important items]
-
-## Discussion Details
-[Longer form content preserving important context, organized by topic]
+Content:
+[Include ALL fetched content here — for Granola: the meeting notes/transcripts
+retrieved via MCP; for files: the file contents read; for paste: the pasted text]
 ```
 
-Rules:
-- Same language as the content
-- Extract real data only — never invent
-- `themes: []` stays empty — Astro fills it in after ingestion
-- Preserve important quotes verbatim
-- If no clear owner for an action item, use "unassigned"
+**Important:** You MUST include the actual fetched content in the delegation prompt. Astro cannot call Granola MCP tools directly — the main session fetches the content, then passes it to Astro for processing.
 
-## Note Format (all sources)
+### What Astro will do
 
-All notes, regardless of source, use this frontmatter:
+Astro handles everything from here: applying token optimization, writing structured notes to `.orbit/notes/`, assigning themes, extracting action items, logging decisions, rebuilding the index, updating `last_ingest` in config.md, writing `ORBIT-STATUS.md`, and reporting completion.
 
-```yaml
----
-title: [descriptive title]
-date: YYYY-MM-DD
-source: granola | jira | slack | file | paste
-participants: [names from the meeting/thread]
-themes: []
-decisions:
-  - [decisions confirmed]
-questions:
-  - [unresolved questions]
-action_items:
-  - text: [task description]
-    owner: [person or "unassigned"]
-    due: [date if mentioned]
-    status: pending
----
-```
+### After delegation
 
-The `themes: []` field always starts empty. After writing the note, the PostToolUse hook in `.claude/settings.json` triggers Astro to read the new note, assign themes, extract action items, log decisions, and update the index.
-
-## Processing Messages
-
-Before writing each note to `.orbit/notes/`, output a branded progress message instead of letting the generic "Writing..." appear alone:
-
-**Spanish:**
-```
-Astro: Procesando señal N de M — [meeting title]...
-```
-
-**English:**
-```
-Astro: Processing signal N of M — [meeting title]...
-```
-
-N is the current note number, M is the total count. This gives the user a clear sense of progress.
-
-## After Ingestion
-
-After writing all notes, report completion:
-
-**Spanish:**
-```
-Captura completa — N señales importadas de [source] (últimos X días).
-
-  .orbit/notes/2026-03-28-standup.md
-  .orbit/notes/2026-03-27-sprint-review.md
-  [list each note written]
-```
-
-**English:**
-```
-Capture complete — N signals imported from [source] (last X days).
-
-  .orbit/notes/2026-03-28-standup.md
-  .orbit/notes/2026-03-27-sprint-review.md
-  [list each note written]
-```
-
-If token optimization was applied, add:
-```
-  📊 Optimization: M notes had existing summaries — used them directly.
-```
-
-Then output "Astro está organizando tus señales..." (EN: "Astro is organizing your signals...") and **immediately delegate to the Astro agent** to process all newly written notes. Do NOT just print a static completion message — actually invoke the Astro agent so the user sees Astro's real completion report with themes assigned, action items extracted, and decisions logged.
-
-After Astro completes, write or update `ORBIT-STATUS.md` at the project root:
-
-```markdown
-# Orbit Status
-
-**Last updated:** YYYY-MM-DD
-**Notes:** N captured
-**Themes:** [theme list]
-**Pending actions:** N
-**Decisions tracked:** N
-
-*Generated by Orbit. Details in .orbit/index.md*
-```
-
-Then output:
+After Astro completes, output:
 ```
 Next: /orbit-brief for today's mission briefing.
 ```

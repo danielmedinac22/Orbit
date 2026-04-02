@@ -17,7 +17,47 @@ If it exists, ask the user:
 
 If the user says no (or anything other than "y" or "yes"), stop here and do not continue.
 
-If `.orbit/config.md` does not exist, continue to Step 1.
+If `.orbit/config.md` does not exist, continue to Step 0.5.
+
+---
+
+## Step 0.5 — Pre-fill from Existing Context
+
+Before asking the user for their context, check for existing information that can save them time:
+
+1. **Check CLAUDE.md**: Read `CLAUDE.md` at the project root. Look for any mentions of: company name, product name, team names, role descriptions, project names, or goals. Extract anything relevant.
+
+2. **Check prior config**: If Step 0 detected an existing `.orbit/config.md` AND the user said "yes" to re-initialize, read that config and extract all fields (name, role, company, projects, goals, stakeholders).
+
+3. **If context was found from either source**, modify Step 1 behavior:
+   - Still show the welcome message (the intro paragraph and agent descriptions)
+   - But instead of asking open-ended questions, present the pre-filled answers and ask for confirmation:
+
+   **Spanish:**
+   ```
+   Encontré contexto existente. Confirma o ajusta:
+
+   - Nombre y rol: [pre-filled]
+   - Empresa/proyectos: [pre-filled]
+   - Objetivos: [pre-filled or "no detectados — cuéntame"]
+   - Stakeholders: [pre-filled or "no detectados — cuéntame"]
+
+   Si todo está bien, responde "ok". Si no, dime qué cambiar.
+   ```
+
+   **English:**
+   ```
+   I found some existing context. Confirm or adjust:
+
+   - Name and role: [pre-filled]
+   - Company/projects: [pre-filled]
+   - Goals: [pre-filled or "not detected — tell me"]
+   - Stakeholders: [pre-filled or "not detected — tell me"]
+
+   If this looks right, say "ok". Otherwise, tell me what to change.
+   ```
+
+4. **If no context found from either source**, proceed to Step 1 as currently written (ask from scratch).
 
 ---
 
@@ -94,6 +134,8 @@ company: [extracted company]
 projects: [Project 1, Project 2, Project 3]
 language: auto
 brief_style: concise
+created: YYYY-MM-DD
+last_ingest: never
 ---
 
 ## Goals
@@ -106,6 +148,8 @@ brief_style: concise
 ```
 
 Use YAML array syntax for `projects`. If the user lists multiple projects, include all of them.
+
+Set `created` to today's date in YYYY-MM-DD format. Set `last_ingest` to the literal string `never`.
 
 ---
 

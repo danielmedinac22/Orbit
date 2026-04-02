@@ -3,3 +3,6 @@
 
 # Generated status file (user-visible mirror of .orbit/index.md)
 ORBIT-STATUS.md
+
+# Runtime cache (update checks, etc.)
+.claude/cache/

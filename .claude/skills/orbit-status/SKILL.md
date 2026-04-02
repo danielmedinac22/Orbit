@@ -23,6 +23,11 @@ Stop here if the workspace does not exist.
 
 Read the workspace files to gather counts and state. Collect all of the following:
 
+### Data Freshness
+- Read `.orbit/config.md` frontmatter for `created` and `last_ingest` fields
+- If `last_ingest` is not "never", calculate days since last ingest
+- Use Glob to find the earliest and latest note dates from filenames in `.orbit/notes/` (dates are YYYY-MM-DD prefixed)
+
 ### Notes (Signals)
 - Use Glob to count `.md` files in `.orbit/notes/` — this is the total signal count
 - Count notes from this week: check filenames for dates on or after Monday of the current week (dates are prefixed in YYYY-MM-DD format)
@@ -67,6 +72,8 @@ Display the full spatial format:
 ```
 ◉ Orbit Station
 ─────────────────
+Data range:     YYYY-MM-DD → YYYY-MM-DD
+Last ingest:    YYYY-MM-DD (N days ago)
 Signals:        N captured (N this week)
 Constellations: N active, N suggested
 Missions:       N active, N drifting
@@ -137,6 +144,9 @@ Replace `N` with the actual count in all suggestions.
 
 ## Step 4 — Handle Edge Cases
 
+- **`last_ingest` is "never" or missing:** Show "Last ingest: never — run /orbit-ingest"
+- **`created` field missing in config.md:** Omit the "Data range" line
+- **No notes exist:** Omit both "Data range" and "Last ingest" lines
 - **Missing `.orbit/action-items/pending.md`:** Count as 0 missions
 - **Missing `.orbit/decisions/log.md`:** Count as 0 coordinates
 - **Missing `.orbit/briefs/` directory or no files in it:** Show "Last briefing: none yet"

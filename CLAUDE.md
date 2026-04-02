@@ -42,4 +42,5 @@ After significant operations (ingest, brief, status), write or update `ORBIT-STA
 - Run `/orbit-help` to see all available commands.
 
 ## Skills: /orbit-help, /orbit-init, /orbit-ingest, /orbit-status, /orbit-brief,
-## /orbit-priorities, /orbit-decisions, /orbit-prep, /orbit-artifact
+## /orbit-priorities, /orbit-decisions, /orbit-prep, /orbit-artifact,
+## /orbit-theme, /orbit-update

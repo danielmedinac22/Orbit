@@ -29,9 +29,13 @@ Print this:
     /orbit-priorities    RICE scoring backed by evidence from your notes
     /orbit-decisions     Audit decisions — contradictions, stalls, reversals
     /orbit-prep          Prepare for a meeting with context and talking points
+    /orbit-theme         Deep-dive into a theme — close items, resolve decisions
 
   Generate
     /orbit-artifact      PM documents — PRD, decision record, stakeholder update
+
+  Maintenance
+    /orbit-update        Check for and apply Orbit updates
 
   Ask
     Just ask Engin anything about your meetings, backlog, or decisions.
