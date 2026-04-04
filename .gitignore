@@ -6,3 +6,7 @@ ORBIT-STATUS.md
 
 # Runtime cache (update checks, etc.)
 .claude/cache/
+
+# Dashboard build artifacts
+dashboard/node_modules/
+dashboard/dist/

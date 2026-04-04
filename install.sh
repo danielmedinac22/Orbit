@@ -167,7 +167,43 @@ done
 echo "  Pre-installed templates into .orbit/templates/"
 
 # ─────────────────────────────────────────────────────────
-# Section 7: Success message
+# Section 7: Install dashboard
+# ─────────────────────────────────────────────────────────
+echo "Installing dashboard..."
+ORBIT_DASHBOARD="$SCRIPT_DIR/dashboard"
+DEST_DASHBOARD="$DEST/dashboard"
+
+if [ -d "$ORBIT_DASHBOARD" ]; then
+    if [ -d "$DEST_DASHBOARD" ]; then
+        read -r -p "Dashboard directory already exists. Overwrite? [y/N] " response || response=""
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                rm -rf "$DEST_DASHBOARD"
+                cp -r "$ORBIT_DASHBOARD" "$DEST_DASHBOARD"
+                echo "  Updated dashboard"
+                ;;
+            *)
+                echo "  Skipping dashboard"
+                ;;
+        esac
+    else
+        cp -r "$ORBIT_DASHBOARD" "$DEST_DASHBOARD"
+        echo "  Installed dashboard"
+    fi
+
+    # Install npm dependencies if Node.js is available
+    if command -v node >/dev/null 2>&1 && [ -f "$DEST_DASHBOARD/package.json" ]; then
+        echo "  Installing dashboard dependencies..."
+        (cd "$DEST_DASHBOARD" && npm install --silent 2>/dev/null) && \
+            echo "  Dashboard dependencies installed" || \
+            echo "  ⚠️  npm install failed — run manually: cd dashboard && npm install"
+    else
+        echo "  ⚠️  Node.js not found — run manually: cd dashboard && npm install"
+    fi
+fi
+
+# ─────────────────────────────────────────────────────────
+# Section 8: Success message
 # ─────────────────────────────────────────────────────────
 echo ""
 echo "◉ Orbit installed successfully."
@@ -176,8 +212,9 @@ echo "  ⚠️  Reinicia Claude Code ahora para que detecte los nuevos skills."
 echo "      (Close and reopen Claude Code)"
 echo ""
 echo "  After restart:"
-echo "  1. /orbit-init     — Set up your workspace"
-echo "  2. /orbit-ingest   — Import your first notes"
-echo "  3. /orbit-status   — See your workspace overview"
+echo "  1. /orbit-init       — Set up your workspace"
+echo "  2. /orbit-ingest     — Import your first notes"
+echo "  3. /orbit-status     — See your workspace overview"
+echo "  4. /orbit-dashboard  — Launch the web dashboard"
 echo ""
 echo "  Need help? /orbit-help"

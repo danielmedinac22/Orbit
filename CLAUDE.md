@@ -41,6 +41,12 @@ After significant operations (ingest, brief, status), write or update `ORBIT-STA
 ## Help
 - Run `/orbit-help` to see all available commands.
 
+## Dashboard
+
+Orbit includes a local web dashboard at `dashboard/`. Launch with `/orbit-dashboard` or `cd dashboard && npm run dev`. Opens at http://localhost:5173.
+
+The dashboard reads `.orbit/` data via a local Express API and can trigger Claude Code actions (like "Work with Engin") via `claude -p` CLI spawn.
+
 ## Skills: /orbit-help, /orbit-init, /orbit-ingest, /orbit-status, /orbit-brief,
 ## /orbit-priorities, /orbit-decisions, /orbit-prep, /orbit-artifact,
-## /orbit-theme, /orbit-update
+## /orbit-theme, /orbit-update, /orbit-dashboard
