@@ -230,11 +230,34 @@ For setup instructions, see the [official Granola MCP documentation](https://www
 
 ---
 
+## Dashboard
+
+Orbit includes a local web dashboard that visualizes your workspace in the browser.
+
+```bash
+cd dashboard && npm install && npm run dev
+```
+
+Open http://localhost:5173 to see your signals, constellations, missions, and coordinates. The dashboard auto-refreshes when `.orbit/` changes — so when you run `/orbit-ingest` in Claude Code, the dashboard updates in real-time.
+
+Action buttons like "Work with Engin" and "Generate Brief" trigger Claude Code skills directly from the browser.
+
+You can also launch it from Claude Code:
+```
+/orbit-dashboard
+```
+
+---
+
 ## Language
 
 Orbit responds in your language. Write in Spanish, get answers in Spanish.
 
 ---
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to add skills, templates, dashboard features, and MCP integrations.
 
 ## License
 
