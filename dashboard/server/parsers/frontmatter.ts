@@ -1,11 +1,30 @@
 import matter from 'gray-matter';
 import fs from 'fs';
 
+// YAML interprets "Key: value" in arrays as objects instead of strings.
+// This is common in Orbit notes (e.g. decisions like "Principio RAD: validar...").
+// Sanitize by converting any object items back to "Key: value" strings.
+function sanitizeArrays(data: Record<string, unknown>): Record<string, unknown> {
+  for (const key of Object.keys(data)) {
+    if (Array.isArray(data[key])) {
+      data[key] = (data[key] as unknown[]).map(item => {
+        if (item !== null && typeof item === 'object' && !Array.isArray(item)) {
+          return Object.entries(item as Record<string, unknown>)
+            .map(([k, v]) => `${k}: ${v}`)
+            .join(', ');
+        }
+        return item;
+      });
+    }
+  }
+  return data;
+}
+
 export function parseFrontmatter<T = Record<string, unknown>>(filePath: string): { data: T; content: string } | null {
   try {
     const raw = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(raw);
-    return { data: data as T, content };
+    return { data: sanitizeArrays(data) as T, content };
   } catch {
     return null;
   }
