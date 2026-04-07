@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useNotes, useNote } from '../hooks/useWorkspace';
 import { Header } from './layout/Header';
 import type { ClaudeAction } from '../types/orbit';
@@ -17,10 +17,18 @@ interface Props {
 }
 
 export function SignalList({ onClaude, initialSlug }: Props) {
-  const { data: notes, loading } = useNotes();
+  const { data: notes, loading, refetch } = useNotes();
   const [selectedSlug, setSelectedSlug] = useState<string | null>(initialSlug || null);
   const { data: selectedNote } = useNote(selectedSlug);
   const [themeFilter, setThemeFilter] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+
+  const deleteNote = useCallback(async (slug: string) => {
+    await fetch(`/api/notes/${slug}`, { method: 'DELETE' });
+    setSelectedSlug(null);
+    setConfirmDelete(null);
+    refetch();
+  }, [refetch]);
 
   if (selectedNote) {
     return (
@@ -33,9 +41,35 @@ export function SignalList({ onClaude, initialSlug }: Props) {
           onClaude={onClaude}
         />
         <div className="content">
-          <a className="back-link" onClick={() => setSelectedSlug(null)}>
-            ← Back to Signals
-          </a>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <a className="back-link" onClick={() => setSelectedSlug(null)}>
+              ← Back to Signals
+            </a>
+            {confirmDelete === selectedNote.slug ? (
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--status-drifting)' }}>Delete this signal?</span>
+                <button
+                  onClick={() => deleteNote(selectedNote.slug)}
+                  style={{ background: 'var(--status-drifting)', color: '#fff', border: 'none', borderRadius: 6, padding: '4px 12px', cursor: 'pointer', fontSize: '0.8rem' }}
+                >
+                  Confirm
+                </button>
+                <button
+                  onClick={() => setConfirmDelete(null)}
+                  style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 6, padding: '4px 12px', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--text-secondary)' }}
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setConfirmDelete(selectedNote.slug)}
+                style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 6, padding: '4px 12px', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--text-muted)' }}
+              >
+                Delete
+              </button>
+            )}
+          </div>
           <div className="detail-header">
             <div className="detail-meta">
               <span>{SOURCE_ICONS[selectedNote.source] || '📄'} {selectedNote.source}</span>

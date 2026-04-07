@@ -23,3 +23,13 @@ export function parseMarkdownTable(content: string): TableRow[] {
     return row;
   }).filter(row => Object.values(row).some(v => v.length > 0));
 }
+
+export function writeMarkdownTable(title: string, headers: string[], rows: TableRow[]): string {
+  const keys = headers.map(h => h.toLowerCase().replace(/\s+/g, '_'));
+  const headerLine = '| ' + headers.join(' | ') + ' |';
+  const separator = '| ' + headers.map(() => '------').join(' | ') + ' |';
+  const dataLines = rows.map(row =>
+    '| ' + keys.map(k => row[k] || '—').join(' | ') + ' |'
+  );
+  return [title, '', headerLine, separator, ...dataLines, ''].join('\n');
+}

@@ -38,6 +38,7 @@ export interface Theme {
 }
 
 export interface ActionItem {
+  index: number;
   task: string;
   owner: string;
   due: string;

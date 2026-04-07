@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import fs from 'fs';
 import path from 'path';
 import { parseAllInDir, parseFrontmatter } from '../parsers/frontmatter.js';
 import { renderMarkdown } from '../parsers/render.js';
@@ -56,6 +57,18 @@ export function notesRoutes(orbitRoot: string): Router {
       action_items: parsed.data.action_items || [],
       body: renderMarkdown(parsed.content),
     });
+  });
+
+  router.delete('/notes/:slug', (req, res) => {
+    const filePath = path.join(notesDir(), `${req.params.slug}.md`);
+    if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'Note not found' });
+
+    try {
+      fs.unlinkSync(filePath);
+      res.json({ ok: true });
+    } catch {
+      res.status(500).json({ error: 'Failed to delete note' });
+    }
   });
 
   return router;

@@ -64,8 +64,14 @@ export function useTheme(name: string | null) {
   return { data, loading };
 }
 
-export function useActionItems() {
-  return useFetch<ActionItem[]>('/api/action-items');
+export interface ActionItemsResponse {
+  items: ActionItem[];
+  configName: string;
+}
+
+export function useActionItems(owner?: string) {
+  const url = owner ? `/api/action-items?owner=${encodeURIComponent(owner)}` : '/api/action-items';
+  return useFetch<ActionItemsResponse>(url, [owner]);
 }
 
 export function useDecisions() {
