@@ -9,10 +9,11 @@ import { actionsRoutes } from './routes/actions.js';
 import { decisionsRoutes } from './routes/decisions.js';
 import { briefsRoutes } from './routes/briefs.js';
 import { claudeRoutes } from './routes/claude.js';
+import { copilotRoutes } from './routes/copilot.js';
 import { setupWatcher } from './watcher.js';
 
 const PORT = parseInt(process.env.PORT || '3001');
-const ORBIT_ROOT = process.env.ORBIT_ROOT || path.resolve(process.cwd(), '..');
+const ORBIT_ROOT = process.env.ORBIT_ROOT || path.resolve(process.cwd(), '..', '..');
 
 const app = express();
 app.use(express.json());
@@ -27,7 +28,8 @@ app.use('/api', themesRoutes(ORBIT_ROOT));
 app.use('/api', actionsRoutes(ORBIT_ROOT));
 app.use('/api', decisionsRoutes(ORBIT_ROOT));
 app.use('/api', briefsRoutes(ORBIT_ROOT));
-app.use('/api', claudeRoutes(wss));
+app.use('/api', copilotRoutes(ORBIT_ROOT));
+app.use('/api', claudeRoutes(wss, ORBIT_ROOT));
 
 // File watcher for live reload
 setupWatcher(ORBIT_ROOT, wss);

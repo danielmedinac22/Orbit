@@ -1,3 +1,5 @@
+export type AttentionReason = 'overdue' | 'blocked' | 'forgotten' | 'needs-decision' | 'stale';
+
 export interface OrbitConfig {
   name: string;
   role: string;
@@ -35,6 +37,7 @@ export interface Theme {
   signalCount: number;
   missionCount: number;
   latestSignalDate: string | null;
+  snippet: string;
 }
 
 export interface ActionItem {
@@ -45,6 +48,24 @@ export interface ActionItem {
   theme: string;
   status: string;
   drifting: boolean;
+  attention: AttentionReason | null;
+  attentionDetail: string;
+}
+
+export interface ConstellationInsight {
+  type: AttentionReason;
+  text: string;
+}
+
+export interface ThemeDetail {
+  name: string;
+  signals: Array<{ slug: string; title: string; date: string }>;
+  missions: Array<Record<string, string>>;
+  decisions: string[];
+  questions: string[];
+  narrative: string | null;
+  narrativeGeneratedAt: string | null;
+  insights: ConstellationInsight[];
 }
 
 export interface Decision {
@@ -63,15 +84,51 @@ export interface Brief {
   content?: string;
 }
 
+export interface StalledTheme {
+  theme: string;
+  daysSinceActivity: number;
+  openItems: number;
+}
+
+export interface OpenQuestion {
+  question: string;
+  theme: string;
+  source: string;
+  daysPending: number;
+}
+
+export interface CopilotData {
+  config: OrbitConfig | null;
+  initialized: boolean;
+  focus: { theme: string; reason: string; score: number } | null;
+  needsImport: boolean;
+  daysSinceLastIngest: number;
+  temporal: {
+    today: ActionItem[];
+    thisWeek: ActionItem[];
+    nextWeek: ActionItem[];
+  };
+  attentionItems: ActionItem[];
+  stalledThemes: StalledTheme[];
+  openQuestions: OpenQuestion[];
+  recentBriefSlug: string | null;
+}
+
 export interface WorkspaceStats {
   config: OrbitConfig | null;
   signals: { total: number; thisWeek: number };
   constellations: { active: number; suggested: number };
-  missions: { active: number; drifting: number; done: number };
+  missions: { active: number; drifting: number; done: number; needsAttention: number };
   coordinates: { confirmed: number; conflicting: number; stalled: number };
   briefs: number;
   artifacts: number;
   initialized: boolean;
+}
+
+export interface EnginAskState {
+  loading: boolean;
+  response: string | null;
+  error: string | null;
 }
 
 export interface ClaudeAction {

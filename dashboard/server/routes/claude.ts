@@ -8,8 +8,9 @@ const ALLOWED_ACTIONS = [
 ];
 
 let activeProcess: ChildProcess | null = null;
+let askProcess: ChildProcess | null = null;
 
-export function claudeRoutes(wss: WebSocketServer): Router {
+export function claudeRoutes(wss: WebSocketServer, orbitRoot: string): Router {
   const router = Router();
 
   router.post('/claude/run', (req, res) => {
@@ -42,8 +43,8 @@ export function claudeRoutes(wss: WebSocketServer): Router {
     broadcast({ type: 'status', content: `Running: ${commandPrompt}` });
 
     try {
-      activeProcess = spawn('claude', ['-p', commandPrompt, '--output-format', 'json'], {
-        cwd: process.cwd(),
+      activeProcess = spawn('claude', ['-p', commandPrompt], {
+        cwd: orbitRoot,
         env: { ...process.env },
         stdio: ['ignore', 'pipe', 'pipe'],
       });
@@ -73,6 +74,79 @@ export function claudeRoutes(wss: WebSocketServer): Router {
       res.json({ status: 'started', command: commandPrompt });
     } catch (err: unknown) {
       activeProcess = null;
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      res.status(500).json({ error: message });
+    }
+  });
+
+  router.post('/claude/send', (req, res) => {
+    const { message } = req.body || {};
+    if (!activeProcess || !activeProcess.stdin) {
+      return res.status(404).json({ error: 'No active Claude process' });
+    }
+    try {
+      activeProcess.stdin.write(message + '\n');
+      res.json({ ok: true });
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to send input' });
+    }
+  });
+
+  // Synchronous ask — collects full response, returns JSON
+  router.post('/claude/ask', (req, res) => {
+    const { prompt } = req.body || {};
+    if (!prompt || typeof prompt !== 'string') {
+      return res.status(400).json({ error: 'prompt is required' });
+    }
+    if (askProcess) {
+      return res.status(409).json({ error: 'An ask is already in progress' });
+    }
+
+    const safePrompt = prompt.replace(/[`$\\]/g, '');
+
+    try {
+      askProcess = spawn('claude', ['-p', safePrompt], {
+        cwd: orbitRoot,
+        env: { ...process.env },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      });
+
+      let output = '';
+      let stderr = '';
+
+      askProcess.stdout?.on('data', (chunk: Buffer) => {
+        output += chunk.toString();
+      });
+
+      askProcess.stderr?.on('data', (chunk: Buffer) => {
+        stderr += chunk.toString();
+      });
+
+      const timeout = setTimeout(() => {
+        if (askProcess) {
+          askProcess.kill('SIGTERM');
+          askProcess = null;
+          res.status(504).json({ error: 'Request timed out after 60s' });
+        }
+      }, 60_000);
+
+      askProcess.on('close', (code) => {
+        clearTimeout(timeout);
+        askProcess = null;
+        if (code === 0) {
+          res.json({ response: output.trim() });
+        } else {
+          res.status(500).json({ error: stderr || `Process exited with code ${code}` });
+        }
+      });
+
+      askProcess.on('error', (err) => {
+        clearTimeout(timeout);
+        askProcess = null;
+        res.status(500).json({ error: `Failed to start Claude: ${err.message}` });
+      });
+    } catch (err: unknown) {
+      askProcess = null;
       const message = err instanceof Error ? err.message : 'Unknown error';
       res.status(500).json({ error: message });
     }

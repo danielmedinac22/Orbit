@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orbit Missions Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0e19;
+            color: #e0e1f2;
+        }
+        .mono {
+            font-family: 'JetBrains+Mono', monospace;
+        }
+        .glass-panel {
+            background: rgba(28, 31, 43, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .status-orbit {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 12px;
+            height: 12px;
+        }
+        .status-orbit::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        .status-orbit::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: currentColor;
+            border-radius: 50%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#363945",
+                      "on-tertiary-container": "#005a3e",
+                      "secondary-container": "#4f319c",
+                      "on-surface-variant": "#bbc9cd",
+                      "on-primary-container": "#005763",
+                      "surface-container-low": "#181b27",
+                      "surface-container-high": "#272935",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6",
+                      "outline-variant": "#3c494c",
+                      "on-surface": "#e0e1f2",
+                      "tertiary-fixed-dim": "#45dfa4",
+                      "surface-tint": "#2fd9f4",
+                      "tertiary-container": "#3dd99e",
+                      "secondary-fixed": "#e8ddff",
+                      "background": "#10131e",
+                      "secondary-fixed-dim": "#cebdff",
+                      "surface-container": "#1c1f2b",
+                      "error": "#ffb4ab",
+                      "tertiary": "#61f6b9",
+                      "tertiary-fixed": "#68fcbf",
+                      "on-secondary": "#381385",
+                      "inverse-surface": "#e0e1f2",
+                      "outline": "#859397",
+                      "primary-fixed-dim": "#2fd9f4",
+                      "on-secondary-fixed": "#21005e",
+                      "on-primary": "#00363e",
+                      "on-tertiary-fixed": "#002114",
+                      "secondary": "#cebdff",
+                      "primary-fixed": "#a2eeff",
+                      "surface-container-highest": "#313441",
+                      "on-secondary-container": "#bea8ff",
+                      "on-secondary-fixed-variant": "#4f319c",
+                      "on-tertiary-fixed-variant": "#005137",
+                      "on-tertiary": "#003825",
+                      "inverse-primary": "#006877",
+                      "on-primary-fixed-variant": "#004e5a",
+                      "primary": "#8aebff",
+                      "surface": "#10131e",
+                      "inverse-on-surface": "#2d303c",
+                      "surface-container-lowest": "#0b0e19",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#001f25",
+                      "surface-variant": "#313441",
+                      "on-background": "#e0e1f2",
+                      "primary-container": "#22d3ee",
+                      "surface-dim": "#10131e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="bg-surface-container-lowest selection:bg-primary/30">
+<!-- SideNavBar (JSON Derived) -->
+<aside class="h-screen w-[210px] fixed left-0 top-0 border-r border-cyan-900/10 bg-[#0b0e19] flex flex-col py-6">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+<div>
+<h2 class="text-xl font-bold text-cyan-400 font-mono tracking-tighter">Orbit</h2>
+<p class="text-[0.65rem] uppercase tracking-widest text-slate-500 font-bold">Celestial Cockpit</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+<span class="text-[0.85rem]">Copilot</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="text-[0.85rem]">Constellations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-cyan-400 font-bold bg-cyan-400/5 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-[0.85rem]">Missions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+<span class="text-[0.85rem]">Signals</span>
+</a>
+</nav>
+<div class="mt-auto px-3 pt-6 border-t border-white/5 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="text-[0.85rem]">Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-xl" href="#">
+<span class="material-symbols-outlined text-[20px]">settings_input_component</span>
+<span class="text-[0.85rem]">Engin status</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-[210px] min-h-screen flex flex-col">
+<!-- TopAppBar (JSON Derived) -->
+<header class="flex justify-between items-center px-7 py-4 h-16 bg-[#10131e] sticky top-0 z-40 border-b border-white/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary transition-colors">menu_open</span>
+<h1 class="text-[1.1rem] font-[650] text-on-surface">Missions</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary/30 mono" placeholder="Search systems..." type="text"/>
+</div>
+<button class="mono text-[0.75rem] px-4 py-1.5 border border-outline-variant hover:bg-white/5 transition-all text-primary rounded-lg">Export</button>
+<button class="mono text-[0.75rem] px-4 py-1.5 bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed font-bold rounded-lg hover:opacity-80 transition-opacity">New Mission</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-7 space-y-6">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-[650] tracking-tight text-white mb-1">Missions Board</h2>
+<p class="text-on-surface-variant text-sm">Strategic operation orchestration and resource mapping.</p>
+</div>
+<button class="flex items-center gap-2 border border-primary/20 text-primary px-5 py-2.5 rounded-lg hover:bg-primary/5 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">radar</span>
+                    Priority Scan
+                </button>
+</div>
+<!-- Filters Row -->
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-error-container/20 border border-error/20 text-error rounded-full text-xs font-semibold flex items-center gap-2">
+                        Needs Attention <span class="bg-error text-on-error w-5 h-5 rounded-full flex items-center justify-center mono text-[10px]">5</span>
+</button>
+<button class="px-4 py-2 bg-surface-container-high border border-outline-variant text-on-surface-variant rounded-full text-xs font-semibold flex items-center gap-2">
+                        Active <span class="text-white/60 mono text-[10px]">8</span>
+</button>
+<button class="px-4 py-2 bg-surface-container-high border border-outline-variant text-on-surface-variant rounded-full text-xs font-semibold flex items-center gap-2">
+                        All <span class="text-white/60 mono text-[10px]">15</span>
+</button>
+</div>
+<div class="flex bg-surface-container rounded-lg p-1 border border-white/5">
+<button class="px-5 py-1.5 bg-primary text-on-primary-fixed rounded-md text-xs font-bold shadow-lg shadow-primary/10">Mine</button>
+<button class="px-5 py-1.5 text-on-surface-variant hover:text-white transition-colors text-xs font-medium">Everyone</button>
+</div>
+</div>
+<!-- Table Card -->
+<div class="bg-[#161b30] rounded-xl overflow-visible border border-white/5 shadow-2xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/5 text-[0.7rem] uppercase tracking-widest text-slate-500 font-bold mono">
+<th class="px-6 py-4 w-12"><span class="material-symbols-outlined text-sm">check_box_outline_blank</span></th>
+<th class="px-6 py-4">Task + Attention Detail</th>
+<th class="px-6 py-4">Owner</th>
+<th class="px-6 py-4">Due</th>
+<th class="px-6 py-4">Theme</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/[0.03]">
+<!-- Row 1: Priority -->
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-6 py-5"><span class="material-symbols-outlined text-slate-600 text-lg group-hover:text-primary transition-colors">check_box_outline_blank</span></td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold text-[0.9rem]">Audit security logs</span>
+<span class="text-error text-[0.7rem] font-medium flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">report</span> High risk
+                                        </span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="professional headshot of a male security analyst in a tech office environment with blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAhxlkU82US9PseRwNKaUWzLgtcVz1u0aUCW2BrY371mAzXIn3CVreiAttiiXmEwFsoLQ7k8KOjJfKZxiFosdk-YZd9vTxLz-s8kafEozSHEadCAyJvaUh_rd_LdTqeZl-Mgj6H5b8i8Q5gnNoXOXiaUEon2HnoxjaQavcnxrA35x3K7tc6EPcx4MGRymvkH59WB38m_u1QFbFTFNP2-kZp5euHU_5cUdMnO97O4agrG-SiTC6703jtIJBum2JFgipns3L56t4Lth"/>
+<span class="text-on-surface-variant text-xs">A. Vance</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant text-xs mono">24 OCT</td>
+<td class="px-6 py-5">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Security</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 px-3 py-1 bg-error-container/10 border border-error/30 rounded-full w-fit">
+<span class="status-orbit text-error"></span>
+<span class="text-[10px] font-bold text-error uppercase tracking-wider">Action Required</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 text-slate-500">
+<span class="material-symbols-outlined text-lg cursor-pointer hover:text-white transition-colors">help</span>
+<span class="material-symbols-outlined text-lg cursor-pointer hover:text-error transition-colors">close</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: Active with Dropdown Open -->
+<tr class="bg-white/[0.04] transition-colors relative z-30">
+<td class="px-6 py-5"><span class="material-symbols-outlined text-slate-600 text-lg">check_box_outline_blank</span></td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold text-[0.9rem]">Update roadmap</span>
+<span class="text-on-surface-variant text-[0.7rem] mt-0.5">Quarterly planning review</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="smiling female product manager with modern office background and soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7AktGb_uUXFSduAQKGynEj6PyOGRSGSJTuN42IiO_dYq7R6bpE4hLKTczRWiXUgh2ywd1SDLkrVpGOTh1tmJ8KXPGJAIJZdnJgFs_VA21h7HC1TM9rhqbXXmz09b93aKRFVWDzHBk8-4g8wHMlfAHiGABIyBnQJItnLfQfMOjaObhse-sLhkR3BCj7vqf_yof3BZM3v6FUH7WugTjEl6pTtLDdu7VHNoYrM0v3pM3zHYVvlvQkhwNOrw-Bf5tnGbUjwZsdBW3fbf7"/>
+<span class="text-on-surface-variant text-xs">L. Chen</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant text-xs mono">28 OCT</td>
+<td class="px-6 py-5">
+<span class="px-2 py-0.5 rounded bg-secondary-container/20 text-secondary-fixed text-[10px] font-bold uppercase tracking-tighter">Roadmap</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container/20 border border-secondary/30 rounded-full w-fit">
+<span class="status-orbit text-secondary"></span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">In Progress</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right relative">
+<div class="flex items-center justify-end gap-3 text-slate-500">
+<div class="relative">
+<span class="material-symbols-outlined text-lg text-primary cursor-pointer transition-colors">help</span>
+<!-- Floating Menu -->
+<div class="absolute right-0 top-full mt-2 w-52 bg-[#1a2038] border border-primary/20 rounded-xl shadow-2xl overflow-hidden py-2 text-left">
+<button class="w-full px-4 py-2.5 text-xs text-on-surface hover:bg-primary/10 transition-colors flex items-center justify-between group">
+                                                    ¿Qué hago primero?
+                                                    <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full px-4 py-2.5 text-xs text-on-surface hover:bg-primary/10 transition-colors flex items-center justify-between group">
+                                                    ¿Cómo desbloquear?
+                                                    <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full px-4 py-2.5 text-xs text-on-surface hover:bg-primary/10 transition-colors flex items-center justify-between group">
+                                                    ¿Cuál es el riesgo?
+                                                    <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+</div>
+</div>
+<span class="material-symbols-outlined text-lg cursor-pointer hover:text-error transition-colors">close</span>
+</div>
+</td>
+</tr>
+<!-- Row 3: Done -->
+<tr class="opacity-40 transition-colors">
+<td class="px-6 py-5"><span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_box</span></td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium text-[0.9rem] line-through">Setup repo</span>
+<span class="text-on-surface-variant text-[0.7rem] mt-0.5">Internal infrastructure</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="close-up of a developer in a studio setting with neon ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBh6F_H8QPNABBPjjOty6CDhoFi_ewZFdNenH0gHie3PZwj4iINqTWTmVbBxFpPwicSjcQByh2fHWvpGxzYefYoxC2R_P-xAyR7tooqKuCUXcNfhfus2h-sTbbxjaU8y1MfzJpsNfk3DuNeQEEOwYtrXHX6pNc8U05P88TFh3NBiyxypi0DozMgTpWfSf94nOI1pKPM5urU5bpOlKlFcxnuc4BCEW31LFOYO6VNKrWIl4I0_o8DytTX7rqZF2B14kIPvmBxfIaHLY-"/>
+<span class="text-on-surface-variant text-xs">System</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant text-xs mono">12 OCT</td>
+<td class="px-6 py-5">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">DevOps</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary-container/10 border border-tertiary/20 rounded-full w-fit">
+<span class="status-orbit text-tertiary"></span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-wider">Completed</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-3 text-slate-500">
+<span class="material-symbols-outlined text-lg">help</span>
+<span class="material-symbols-outlined text-lg">close</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer/Pagination -->
+<div class="px-6 py-4 bg-white/5 flex justify-between items-center">
+<span class="text-[0.65rem] text-slate-500 uppercase tracking-widest font-bold mono">3 items visible of 15</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Stats Asymmetric Bento -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-8 bg-surface-container rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+<div>
+<p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-4">Operational Velocity</p>
+<div class="flex items-end gap-8">
+<div>
+<h3 class="text-4xl font-bold text-primary mono tracking-tighter">84%</h3>
+<p class="text-[0.65rem] text-on-surface-variant mt-1">Completion Delta</p>
+</div>
+<div class="flex-1 h-12 flex items-end gap-1 pb-1">
+<div class="w-full bg-primary/20 h-[30%] rounded-sm"></div>
+<div class="w-full bg-primary/20 h-[45%] rounded-sm"></div>
+<div class="w-full bg-primary/40 h-[60%] rounded-sm"></div>
+<div class="w-full bg-primary/60 h-[55%] rounded-sm"></div>
+<div class="w-full bg-primary/80 h-[90%] rounded-sm"></div>
+<div class="w-full bg-primary h-[85%] rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-4 bg-primary/5 rounded-xl p-6 border border-primary/20 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">auto_awesome</span>
+<h4 class="text-sm font-semibold text-white">AI Copilot Analysis</h4>
+<p class="text-[0.7rem] text-on-surface-variant mt-2 leading-relaxed">System predicts 3 new security missions based on recent signal anomalies.</p>
+<button class="mt-4 text-[0.65rem] font-bold text-primary uppercase tracking-widest hover:underline transition-all">Review Signal Logs</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

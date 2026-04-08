@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import type { WorkspaceStats, Note, Theme, ActionItem, Decision, Brief } from '../types/orbit';
+import type { WorkspaceStats, Note, Theme, ActionItem, Decision, Brief, CopilotData, ThemeDetail } from '../types/orbit';
 
 function useFetch<T>(url: string, deps: unknown[] = []) {
   const [data, setData] = useState<T | null>(null);
@@ -20,6 +20,10 @@ function useFetch<T>(url: string, deps: unknown[] = []) {
 
 export function useWorkspace() {
   return useFetch<WorkspaceStats>('/api/workspace');
+}
+
+export function useCopilot() {
+  return useFetch<CopilotData>('/api/copilot');
 }
 
 export function useNotes(theme?: string) {
@@ -49,7 +53,7 @@ export function useThemes() {
 }
 
 export function useTheme(name: string | null) {
-  const [data, setData] = useState<{ name: string; signals: Array<{ slug: string; title: string; date: string }>; missions: Array<Record<string, string>>; decisions: string[]; questions: string[] } | null>(null);
+  const [data, setData] = useState<ThemeDetail | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -72,6 +76,10 @@ export interface ActionItemsResponse {
 export function useActionItems(owner?: string) {
   const url = owner ? `/api/action-items?owner=${encodeURIComponent(owner)}` : '/api/action-items';
   return useFetch<ActionItemsResponse>(url, [owner]);
+}
+
+export function useAllActionItems() {
+  return useFetch<ActionItemsResponse>('/api/action-items?all=true');
 }
 
 export function useDecisions() {

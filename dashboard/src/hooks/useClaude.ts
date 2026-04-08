@@ -8,10 +8,11 @@ export function useClaude() {
   const [status, setStatus] = useState('');
 
   const run = useCallback(async (action: ClaudeAction) => {
-    setIsOpen(true);
-    setIsRunning(true);
-    setOutput('');
-    setStatus(`Starting: /${action.action} ${action.args || ''}`);
+    // If already running, just reopen the panel — don't clear anything
+    if (isRunning) {
+      setIsOpen(true);
+      return;
+    }
 
     try {
       const res = await fetch('/api/claude/run', {
@@ -22,17 +23,28 @@ export function useClaude() {
 
       if (!res.ok) {
         const err = await res.json();
+        // If busy, just reopen the panel with existing output
+        if (res.status === 409) {
+          setIsOpen(true);
+          return;
+        }
+        setIsOpen(true);
         setOutput(err.error || 'Failed to start');
         setIsRunning(false);
         return;
       }
 
-      setStatus('Running...');
+      // Only clear and start fresh on successful launch
+      setIsOpen(true);
+      setIsRunning(true);
+      setOutput('');
+      setStatus(`Running: /${action.action} ${action.args || ''}`);
     } catch (err) {
+      setIsOpen(true);
       setOutput(`Connection error: ${err}`);
       setIsRunning(false);
     }
-  }, []);
+  }, [isRunning]);
 
   const handleWSMessage = useCallback((msg: { type: string; content: string }) => {
     if (msg.type === 'output') {
@@ -49,9 +61,13 @@ export function useClaude() {
 
   const close = useCallback(() => {
     setIsOpen(false);
-    setOutput('');
-    setStatus('');
   }, []);
+
+  const reopen = useCallback(() => {
+    if (output || isRunning) {
+      setIsOpen(true);
+    }
+  }, [output, isRunning]);
 
   const stop = useCallback(async () => {
     try {
@@ -59,5 +75,5 @@ export function useClaude() {
     } catch {}
   }, []);
 
-  return { isOpen, isRunning, output, status, run, close, stop, handleWSMessage };
+  return { isOpen, isRunning, output, status, run, close, reopen, stop, handleWSMessage };
 }

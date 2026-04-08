@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#363945",
+                    "on-tertiary-container": "#005a3e",
+                    "secondary-container": "#4f319c",
+                    "on-surface-variant": "#bbc9cd",
+                    "on-primary-container": "#005763",
+                    "surface-container-low": "#181b27",
+                    "surface-container-high": "#272935",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#3c494c",
+                    "on-surface": "#e0e1f2",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "surface-tint": "#2fd9f4",
+                    "tertiary-container": "#3dd99e",
+                    "secondary-fixed": "#e8ddff",
+                    "background": "#10131e",
+                    "secondary-fixed-dim": "#cebdff",
+                    "surface-container": "#1c1f2b",
+                    "error": "#ffb4ab",
+                    "tertiary": "#61f6b9",
+                    "tertiary-fixed": "#68fcbf",
+                    "on-secondary": "#381385",
+                    "inverse-surface": "#e0e1f2",
+                    "outline": "#859397",
+                    "primary-fixed-dim": "#2fd9f4",
+                    "on-secondary-fixed": "#21005e",
+                    "on-primary": "#00363e",
+                    "on-tertiary-fixed": "#002114",
+                    "secondary": "#cebdff",
+                    "primary-fixed": "#a2eeff",
+                    "surface-container-highest": "#313441",
+                    "on-secondary-container": "#bea8ff",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "on-tertiary": "#003825",
+                    "inverse-primary": "#006877",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "primary": "#8aebff",
+                    "surface": "#10131e",
+                    "inverse-on-surface": "#2d303c",
+                    "surface-container-lowest": "#0b0e19",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#001f25",
+                    "surface-variant": "#313441",
+                    "on-background": "#e0e1f2",
+                    "primary-container": "#22d3ee",
+                    "surface-dim": "#10131e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #0b0e19;
+        font-family: 'Inter', sans-serif;
+        color: #e0e1f2;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(28, 31, 43, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(60, 73, 76, 0.1);
+      }
+      .status-orbit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border: 1.5px solid currentColor;
+        border-radius: 50%;
+      }
+      .status-orbit-core {
+        width: 4px;
+        height: 4px;
+        background-color: currentColor;
+        border-radius: 50%;
+      }
+    </style>
+</head>
+<body class="bg-surface-container-lowest">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-[210px] fixed left-0 top-0 border-r border-outline-variant/10 bg-surface-container-lowest flex flex-col py-6">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-xl font-bold text-primary font-mono tracking-tight">Orbit</h2>
+<p class="text-[0.65rem] text-on-surface-variant uppercase tracking-widest">Celestial Cockpit</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-primary/10 hover:text-primary transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy">smart_toy</span>
+<span class="text-sm">Copilot</span>
+</a>
+<!-- Active State: Constellations -->
+<a class="flex items-center gap-3 px-3 py-2 text-primary font-bold bg-primary/5 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-sm">Constellations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-primary/10 hover:text-primary transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="explore">explore</span>
+<span class="text-sm">Missions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-primary/10 hover:text-primary transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="sensors">sensors</span>
+<span class="text-sm">Signals</span>
+</a>
+</nav>
+<div class="px-3 mt-auto space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-primary/10 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="text-sm">Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-primary/10 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-sm">Engin status</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[210px] min-h-screen bg-surface-dim">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center px-7 py-4 h-16 sticky top-0 bg-surface-dim border-b border-white/10 z-10">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu_open">menu_open</span>
+</button>
+<h1 class="text-[1.1rem] font-[650] text-on-surface">Journal Entries Management</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none text-xs font-mono py-2 pl-9 pr-4 rounded-lg w-64 focus:ring-1 focus:ring-primary/30 text-on-surface" placeholder="Search signals..." type="text"/>
+</div>
+<button class="px-4 py-2 bg-transparent border border-outline-variant/20 rounded-lg text-primary text-xs font-mono hover:bg-white/5 transition-all">
+                    Export
+                </button>
+<button class="px-4 py-2 bg-gradient-to-br from-primary to-primary-container rounded-lg text-on-primary text-xs font-mono font-bold hover:opacity-90 transition-all">
+                    New Mission
+                </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="p-[28px] max-w-7xl mx-auto space-y-8">
+<!-- Back Link -->
+<a class="flex items-center gap-2 text-on-surface-variant text-[0.85rem] hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+                Back to Constellations
+            </a>
+<!-- Layout Grid: Bento Style -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Project Summary Card (Wide) -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container border border-outline-variant/10 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="space-y-1">
+<p class="text-[0.65rem] text-on-surface-variant uppercase tracking-widest font-semibold">Signals</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-mono text-primary">5</span>
+<div class="status-orbit text-primary"><div class="status-orbit-core"></div></div>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-[0.65rem] text-on-surface-variant uppercase tracking-widest font-semibold">Missions</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-mono text-primary">12</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-[0.65rem] text-on-surface-variant uppercase tracking-widest font-semibold">Decisions</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-mono text-primary">3</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-[0.65rem] text-on-surface-variant uppercase tracking-widest font-semibold">Questions</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-mono text-primary">11</span>
+<div class="status-orbit text-error"><div class="status-orbit-core"></div></div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/10 space-y-2">
+<div class="flex items-center gap-3">
+<span class="text-[0.75rem] font-mono text-on-surface-variant">Latest:</span>
+<span class="text-sm font-medium text-secondary">Planning AO — 2026-04-06</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="text-[0.75rem] font-mono text-on-surface-variant shrink-0">Last decision:</span>
+<span class="text-sm text-on-surface-variant leading-relaxed">Épicas activas: <span class="text-secondary font-mono">F-06, F-08, F-11...</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Launch Pad Card -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-high border border-outline-variant/10 rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+<div class="relative z-10 flex flex-col h-full">
+<header class="flex items-center justify-between mb-6">
+<h3 class="text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.2em]">LAUNCH PAD</h3>
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="rocket_launch">rocket_launch</span>
+</header>
+<div class="space-y-3">
+<button class="w-full py-3 px-4 bg-primary-container text-on-primary-container rounded-lg text-xs font-bold font-mono flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                                Ask Engin about this project
+                            </button>
+<button class="w-full py-3 px-4 bg-transparent border border-outline-variant/30 text-on-surface-variant rounded-lg text-xs font-medium font-mono flex items-center justify-center gap-2 hover:bg-white/5 transition-all">
+                                Generate PRD
+                            </button>
+<button class="w-full py-3 px-4 bg-transparent border border-outline-variant/30 text-on-surface-variant rounded-lg text-xs font-medium font-mono flex items-center justify-center gap-2 hover:bg-white/5 transition-all">
+                                Prep next meeting
+                            </button>
+</div>
+</div>
+</section>
+<!-- Decisions Card -->
+<section class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container border border-outline-variant/10 rounded-xl p-6">
+<header class="flex items-center justify-between mb-6">
+<h3 class="text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.2em]">DECISIONS</h3>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="gavel">gavel</span>
+</header>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary mt-1.5 shrink-0"></div>
+<p class="text-sm text-on-surface leading-tight">Approved new auth flow for v2 constellation systems</p>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary mt-1.5 shrink-0"></div>
+<p class="text-sm text-on-surface leading-tight">Set Q3 goals for sensor array expansion</p>
+</li>
+</ul>
+</section>
+<!-- Open Questions Card -->
+<section class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container border border-outline-variant/10 rounded-xl p-6">
+<header class="flex items-center justify-between mb-6">
+<h3 class="text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.2em]">OPEN QUESTIONS</h3>
+<span class="material-symbols-outlined text-error text-sm" data-icon="help_center">help_center</span>
+</header>
+<div class="flex items-center justify-between p-3 rounded-lg bg-error-container/10 border border-error/10">
+<span class="text-sm font-medium text-[#fbbf24]">Why is export slow for large telemetry?</span>
+<button class="w-6 h-6 rounded flex items-center justify-center hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined text-sm text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Signals Card -->
+<section class="col-span-12 md:col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant/10 rounded-xl p-6">
+<header class="flex items-center justify-between mb-6">
+<h3 class="text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.2em]">SIGNALS</h3>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="vibration">vibration</span>
+</header>
+<div class="space-y-3">
+<div class="flex items-center justify-between group cursor-pointer p-2 rounded-lg hover:bg-white/5 transition-all">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Notes: Sprint Review</span>
+<span class="text-[0.7rem] text-on-surface-variant/70 font-mono uppercase tracking-tighter">Documentation</span>
+</div>
+<span class="text-[0.75rem] font-mono text-on-surface-variant">Apr 6</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer p-2 rounded-lg hover:bg-white/5 transition-all">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Feedback: UX Alpha</span>
+<span class="text-[0.7rem] text-on-surface-variant/70 font-mono uppercase tracking-tighter">Observation</span>
+</div>
+<span class="text-[0.75rem] font-mono text-on-surface-variant">Apr 4</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Subtle Decorative Visualization (NASA-spec vibe) -->
+<div class="mt-12 h-64 w-full bg-surface-container-lowest rounded-2xl border border-outline-variant/5 relative overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #3c494c 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative w-48 h-48">
+<div class="absolute inset-0 border border-primary/20 rounded-full animate-pulse"></div>
+<div class="absolute inset-4 border border-primary/10 rounded-full"></div>
+<div class="absolute inset-8 border border-primary/5 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full shadow-[0_0_15px_rgba(138,235,255,0.8)]"></div>
+<!-- Random dots as planets -->
+<div class="absolute top-4 right-10 w-1.5 h-1.5 bg-secondary rounded-full"></div>
+<div class="absolute bottom-10 left-6 w-1 h-1 bg-tertiary rounded-full"></div>
+</div>
+</div>
+<div class="absolute bottom-4 left-6 font-mono text-[0.6rem] text-on-surface-variant/40 space-y-1">
+<p>LONGITUDE: 142.0832</p>
+<p>LATITUDE: -32.9011</p>
+<p>AZIMUTH: 21.05°</p>
+</div>
+<div class="absolute bottom-4 right-6 text-right font-mono text-[0.6rem] text-on-surface-variant/40">
+<p>SYSTEM STATUS: OPERATIONAL</p>
+<p class="text-primary/60">ACTIVE UPLINK: ESTABLISHED</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

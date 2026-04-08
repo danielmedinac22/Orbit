@@ -2,6 +2,7 @@ import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
 import { parseMarkdownTable, writeMarkdownTable } from '../parsers/table.js';
+import { getAttentionItems } from '../intelligence/attention.js';
 
 export function actionsRoutes(orbitRoot: string): Router {
   const router = Router();
@@ -16,22 +17,6 @@ export function actionsRoutes(orbitRoot: string): Router {
     } catch {
       return '';
     }
-  }
-
-  function readItems() {
-    const content = fs.readFileSync(filePath(), 'utf-8');
-    const rows = parseMarkdownTable(content);
-    const today = new Date().toISOString().split('T')[0];
-
-    return rows.map((row, index) => ({
-      index,
-      task: row.task || '',
-      owner: row.owner || '',
-      due: row.due || '',
-      theme: row.theme || '',
-      status: row.status || 'pending',
-      drifting: !!(row.due && row.due < today && (row.status || '').toLowerCase() !== 'done' && (row.status || '').toLowerCase() !== 'completed'),
-    }));
   }
 
   function writeItems(rows: Array<{ task: string; owner: string; due: string; theme: string; status: string }>) {
@@ -52,14 +37,15 @@ export function actionsRoutes(orbitRoot: string): Router {
 
   router.get('/action-items', (req, res) => {
     try {
-      const items = readItems();
-      const owner = req.query.owner as string | undefined;
       const configName = getConfigName();
-      const filtered = owner
-        ? items.filter(i => i.owner.toLowerCase() === owner.toLowerCase())
-        : items;
+      const owner = req.query.owner as string | undefined;
+      const all = req.query.all === 'true';
 
-      res.json({ items: filtered, configName });
+      // Use attention engine for enriched items
+      const ownerFilter = all ? undefined : (owner || configName || undefined);
+      const items = getAttentionItems(orbitRoot, ownerFilter);
+
+      res.json({ items, configName });
     } catch {
       res.json({ items: [], configName: '' });
     }
@@ -68,14 +54,21 @@ export function actionsRoutes(orbitRoot: string): Router {
   router.put('/action-items/:index', (req, res) => {
     try {
       const idx = parseInt(req.params.index, 10);
-      const items = readItems();
-      if (idx < 0 || idx >= items.length) return res.status(404).json({ error: 'Item not found' });
+      const content = fs.readFileSync(filePath(), 'utf-8');
+      const rows = parseMarkdownTable(content);
+      if (idx < 0 || idx >= rows.length) return res.status(404).json({ error: 'Item not found' });
 
       const { status } = req.body;
-      if (status) items[idx].status = status;
+      if (status) rows[idx].status = status;
 
-      writeItems(items);
-      res.json({ ok: true, item: items[idx] });
+      writeItems(rows.map(r => ({
+        task: r.task || '',
+        owner: r.owner || '',
+        due: r.due || '',
+        theme: r.theme || '',
+        status: r.status || 'pending',
+      })));
+      res.json({ ok: true });
     } catch (err) {
       res.status(500).json({ error: 'Failed to update item' });
     }
@@ -84,11 +77,18 @@ export function actionsRoutes(orbitRoot: string): Router {
   router.delete('/action-items/:index', (req, res) => {
     try {
       const idx = parseInt(req.params.index, 10);
-      const items = readItems();
-      if (idx < 0 || idx >= items.length) return res.status(404).json({ error: 'Item not found' });
+      const content = fs.readFileSync(filePath(), 'utf-8');
+      const rows = parseMarkdownTable(content);
+      if (idx < 0 || idx >= rows.length) return res.status(404).json({ error: 'Item not found' });
 
-      items.splice(idx, 1);
-      writeItems(items);
+      rows.splice(idx, 1);
+      writeItems(rows.map(r => ({
+        task: r.task || '',
+        owner: r.owner || '',
+        due: r.due || '',
+        theme: r.theme || '',
+        status: r.status || 'pending',
+      })));
       res.json({ ok: true });
     } catch {
       res.status(500).json({ error: 'Failed to delete item' });

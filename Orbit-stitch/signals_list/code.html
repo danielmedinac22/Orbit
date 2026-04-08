@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orbit | Signals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#363945",
+                    "on-tertiary-container": "#005a3e",
+                    "secondary-container": "#4f319c",
+                    "on-surface-variant": "#bbc9cd",
+                    "on-primary-container": "#005763",
+                    "surface-container-low": "#181b27",
+                    "surface-container-high": "#272935",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#3c494c",
+                    "on-surface": "#e0e1f2",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "surface-tint": "#2fd9f4",
+                    "tertiary-container": "#3dd99e",
+                    "secondary-fixed": "#e8ddff",
+                    "background": "#10131e",
+                    "secondary-fixed-dim": "#cebdff",
+                    "surface-container": "#1c1f2b",
+                    "error": "#ffb4ab",
+                    "tertiary": "#61f6b9",
+                    "tertiary-fixed": "#68fcbf",
+                    "on-secondary": "#381385",
+                    "inverse-surface": "#e0e1f2",
+                    "outline": "#859397",
+                    "primary-fixed-dim": "#2fd9f4",
+                    "on-secondary-fixed": "#21005e",
+                    "on-primary": "#00363e",
+                    "on-tertiary-fixed": "#002114",
+                    "secondary": "#cebdff",
+                    "primary-fixed": "#a2eeff",
+                    "surface-container-highest": "#313441",
+                    "on-secondary-container": "#bea8ff",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "on-tertiary": "#003825",
+                    "inverse-primary": "#006877",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "primary": "#8aebff",
+                    "surface": "#10131e",
+                    "inverse-on-surface": "#2d303c",
+                    "surface-container-lowest": "#0b0e19",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#001f25",
+                    "surface-variant": "#313441",
+                    "on-background": "#e0e1f2",
+                    "primary-container": "#22d3ee",
+                    "surface-dim": "#10131e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #0b0e19; /* background from JSON style_bg_color */
+        color: #e0e1f2;
+        font-family: 'Inter', sans-serif;
+      }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .active-glow {
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.06);
+      }
+      .ghost-border {
+        outline: 1px solid rgba(60, 73, 76, 0.1);
+      }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-[210px] fixed left-0 top-0 border-r border-white/5 bg-[#0b0e19] flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-cyan-400/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-cyan-400 text-lg">orbit</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-cyan-400 font-mono tracking-tight">Orbit</h1>
+<p class="text-[0.65rem] uppercase tracking-widest text-slate-500 font-bold">Celestial Cockpit</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-lg group scale-95 active:duration-150" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-[0.85rem]">Copilot</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-lg group scale-95 active:duration-150" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-[0.85rem]">Constellations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-lg group scale-95 active:duration-150" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[0.85rem]">Missions</span>
+</a>
+<!-- Active Tab: Signals -->
+<a class="flex items-center gap-3 px-3 py-2 text-cyan-400 font-bold bg-cyan-400/5 transition-colors rounded-lg group scale-95 active:duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="text-[0.85rem]">Signals</span>
+</a>
+</nav>
+<div class="px-3 pt-6 border-t border-white/5 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-lg group text-[0.85rem]" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors rounded-lg group text-[0.85rem]" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span>Engin status</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="flex-1 ml-[210px] bg-[#10131e] min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-7 py-4 h-16 bg-[#10131e] border-b border-white/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-cyan-400 cursor-pointer hover:bg-white/5 p-1 rounded transition-all">menu_open</span>
+<h2 class="text-[1.1rem] font-[650] font-headline text-on-surface">Signals</h2>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search Mockup -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-9 pr-4 py-1.5 text-xs font-label w-64 focus:ring-1 focus:ring-cyan-400/30 text-on-surface placeholder:text-slate-500" placeholder="Search signals..." type="text"/>
+</div>
+<button class="mono text-xs font-medium text-cyan-400 border border-cyan-400/20 px-4 py-1.5 rounded-lg hover:bg-cyan-400/10 transition-all active:opacity-80">
+                    Export
+                </button>
+</div>
+</header>
+<!-- Content Area -->
+<section class="p-7 max-w-6xl mx-auto w-full">
+<!-- Signals List Container -->
+<div class="space-y-3">
+<!-- Highlighted Row (Hover State) -->
+<div class="group relative bg-[#1c1f2b] rounded-xl overflow-hidden border border-cyan-400/30 active-glow transition-all duration-300">
+<div class="flex items-center justify-between p-4 px-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-cyan-400">auto_stories</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                    Engineering Sync — 2026-04-10
+                                    <span class="bg-cyan-400/10 text-cyan-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Granola</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem] font-medium opacity-80">Orbital mechanics verification and propulsion status</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">2m ago</span>
+</div>
+</div>
+<!-- Signal Detail Snapshot (Expanded logic) -->
+<div class="px-6 pb-5 pt-2 border-t border-white/5 bg-[#161b30]">
+<div class="mono text-[0.78rem] text-cyan-300/80 space-y-1">
+<p><span class="text-slate-500">Participants:</span> @alice, @bob, @cmd_vasquez</p>
+<p><span class="text-slate-500">Themes:</span> <span class="text-tertiary">#auth</span>, <span class="text-tertiary">#api</span>, <span class="text-tertiary">#navigation_lock</span></p>
+<div class="mt-3 p-3 bg-black/20 rounded-lg border border-white/5 text-slate-300 leading-relaxed italic">
+                                "Reviewed the telemetry handshake protocol. Vasquez suggests a 40ms buffer increase for Signal A1 constellations. Moving to production build cycle tomorrow."
+                            </div>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">content_paste</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                Quarterly Payload Manifest
+                                <span class="bg-white/10 text-slate-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Paste</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Logistics data for upcoming lunar ferry missions</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">14m ago</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                mission_critical_v4.pdf
+                                <span class="bg-white/10 text-slate-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">File</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Encrypted tactical brief from Earth Command</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">1h ago</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                UX Review: Cockpit Interface
+                                <span class="bg-cyan-400/10 text-cyan-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Granola</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Discussion on typography scales and information density</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">3h ago</span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">content_paste</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                Sensor Calibration Snippet
+                                <span class="bg-white/10 text-slate-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Paste</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Raw hex values for Lidar array #4</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">5h ago</span>
+</div>
+</div>
+<!-- Row 6 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                orbit_schematic_r02.dwg
+                                <span class="bg-white/10 text-slate-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">File</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Structural revision for the main docking bay</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">Yesterday</span>
+</div>
+</div>
+<!-- Row 7 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                Fleet Management Standup
+                                <span class="bg-cyan-400/10 text-cyan-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">Granola</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Resource allocation for Deep Space Network expansion</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">2d ago</span>
+</div>
+</div>
+<!-- Row 8 -->
+<div class="group flex items-center justify-between p-4 px-6 bg-[#161b30] rounded-xl border border-white/5 hover:border-white/10 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cyan-300">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#f1f5f9] font-bold text-sm tracking-tight flex items-center gap-2">
+                                legal_terms_v2.docx
+                                <span class="bg-white/10 text-slate-400 text-[0.6rem] px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter">File</span>
+</h3>
+<p class="text-on-surface-variant text-[0.75rem]">Updated liability clauses for asteroid mining operations</p>
+</div>
+</div>
+<div class="text-right">
+<span class="mono text-[0.78rem] text-slate-500">4d ago</span>
+</div>
+</div>
+</div>
+<!-- Empty Footer / Pagination Mockup -->
+<div class="mt-8 flex justify-center">
+<button class="bg-white/5 hover:bg-white/10 text-slate-400 px-6 py-2 rounded-full mono text-[0.7rem] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span>
+                    Load Historical Signals
+                </button>
+</div>
+</section>
+<!-- Signature Texture: Status Orbit Decorative Element -->
+<div class="fixed bottom-10 right-10 flex items-center gap-4 pointer-events-none opacity-40">
+<div class="relative w-12 h-12">
+<div class="absolute inset-0 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
+<div class="absolute inset-2 border-2 border-cyan-400/40 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+</div>
+<div class="mono text-[0.6rem] uppercase tracking-[0.2em] text-cyan-400">
+                System Active<br/>Deep Scan Sync
+            </div>
+</div>
+</main>
+</body></html>

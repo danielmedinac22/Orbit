@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orbit | Constellations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#363945",
+                    "on-tertiary-container": "#005a3e",
+                    "secondary-container": "#4f319c",
+                    "on-surface-variant": "#bbc9cd",
+                    "on-primary-container": "#005763",
+                    "surface-container-low": "#181b27",
+                    "surface-container-high": "#272935",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#3c494c",
+                    "on-surface": "#e0e1f2",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "surface-tint": "#2fd9f4",
+                    "tertiary-container": "#3dd99e",
+                    "secondary-fixed": "#e8ddff",
+                    "background": "#10131e",
+                    "secondary-fixed-dim": "#cebdff",
+                    "surface-container": "#1c1f2b",
+                    "error": "#ffb4ab",
+                    "tertiary": "#61f6b9",
+                    "tertiary-fixed": "#68fcbf",
+                    "on-secondary": "#381385",
+                    "inverse-surface": "#e0e1f2",
+                    "outline": "#859397",
+                    "primary-fixed-dim": "#2fd9f4",
+                    "on-secondary-fixed": "#21005e",
+                    "on-primary": "#00363e",
+                    "on-tertiary-fixed": "#002114",
+                    "secondary": "#cebdff",
+                    "primary-fixed": "#a2eeff",
+                    "surface-container-highest": "#313441",
+                    "on-secondary-container": "#bea8ff",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "on-tertiary": "#003825",
+                    "inverse-primary": "#006877",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "primary": "#8aebff",
+                    "surface": "#10131e",
+                    "inverse-on-surface": "#2d303c",
+                    "surface-container-lowest": "#0b0e19",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#001f25",
+                    "surface-variant": "#313441",
+                    "on-background": "#e0e1f2",
+                    "primary-container": "#22d3ee",
+                    "surface-dim": "#10131e"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #0b0e19;
+        font-family: 'Inter', sans-serif;
+      }
+      .mono-text {
+        font-family: 'JetBrains Mono', monospace;
+      }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary/30">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full py-6 h-screen w-[210px] fixed left-0 top-0 border-r border-cyan-900/10 bg-[#0b0e19] z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+<span class="material-symbols-outlined text-on-primary-fixed" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-bold text-cyan-400 font-mono tracking-tighter">Orbit</span>
+<span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Celestial Cockpit</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors group" href="#">
+<span class="material-symbols-outlined transition-transform group-active:scale-95" data-icon="smart_toy">smart_toy</span>
+<span class="text-[0.85rem]">Copilot</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-cyan-400 font-bold bg-cyan-400/5 transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[0.85rem]">Constellations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[0.85rem]">Missions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors group" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="text-[0.85rem]">Signals</span>
+</a>
+</nav>
+<div class="px-3 mt-auto pt-6 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-[0.85rem]">Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 font-medium hover:bg-cyan-400/10 hover:text-cyan-300 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-[0.85rem]">Engin status</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-[210px] min-h-screen bg-[#0c0f1a]">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center px-7 py-4 h-16 sticky top-0 bg-[#10131e] border-b border-white/10 z-40">
+<div class="flex items-center gap-4">
+<button class="text-cyan-400 hover:bg-white/5 p-1 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="menu_open">menu_open</span>
+</button>
+<h1 class="text-[1.1rem] font-[650] font-headline text-on-surface">Constellations</h1>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search Bar Placeholder -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-1.5 text-xs font-mono w-64 focus:ring-1 focus:ring-primary-fixed-dim/30 placeholder:text-slate-600" placeholder="Scan systems..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-lg border border-outline-variant/20 text-cyan-400 font-mono text-[0.75rem] hover:bg-white/5 transition-all">Export</button>
+<button class="px-4 py-1.5 rounded-lg bg-gradient-to-br from-primary to-primary-container text-on-primary font-mono text-[0.75rem] font-bold shadow-[0_0_15px_rgba(34,211,238,0.1)] active:opacity-80 transition-opacity">New Mission</button>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-7">
+<!-- Statistics Row (Asymmetric) -->
+<div class="grid grid-cols-12 gap-6 mb-10">
+<div class="col-span-8 p-6 rounded-xl bg-surface-container/40 border border-white/5 flex items-center justify-between">
+<div>
+<h2 class="text-slate-500 text-[0.65rem] uppercase tracking-[0.2em] font-bold mb-1">System Health</h2>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-mono text-primary font-bold">99.4</span>
+<span class="text-slate-500 text-xs font-mono">% uptime</span>
+</div>
+</div>
+<div class="h-12 w-1/2 flex items-end gap-1 px-4">
+<div class="flex-1 bg-primary/20 rounded-t h-[60%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-[80%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[90%]"></div>
+<div class="flex-1 bg-primary/30 rounded-t h-[70%]"></div>
+<div class="flex-1 bg-primary/50 rounded-t h-[100%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[85%]"></div>
+</div>
+</div>
+<div class="col-span-4 p-6 rounded-xl bg-gradient-to-br from-secondary-container/20 to-transparent border border-white/5">
+<h2 class="text-slate-500 text-[0.65rem] uppercase tracking-[0.2em] font-bold mb-3">Core Active</h2>
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<div class="absolute inset-0 border-2 border-primary/20 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_#8aebff]"></div>
+</div>
+<div class="font-mono">
+<div class="text-sm text-on-surface">Sector 7-G</div>
+<div class="text-[0.65rem] text-slate-500">Coordinate: 144.0.2</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Constellations Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[14px]">
+<!-- Card 1: Data Viz -->
+<div class="bg-[#161b30] rounded-xl p-5 border border-white/5 hover:border-primary/20 transition-all group flex flex-col justify-between h-[180px]">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 opacity-70 text-[1.2rem]" style="font-variation-settings: 'FILL' 1;">star</span>
+<h3 class="text-[0.95rem] font-semibold text-on-surface leading-none">Data Viz</h3>
+</div>
+<span class="text-[0.65rem] font-mono text-slate-500">ID: CN-001</span>
+</div>
+<div class="pl-3 border-l-2 border-slate-400/12 mb-4">
+<p class="text-on-surface-variant text-[0.8rem] leading-relaxed line-clamp-2">Active 1d ago · 2 overdue · 3 items tuyos · Épicas activas: F-06, F-08, F-11</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-[0.72rem] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400"></span> 5 signals</span>
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400/40"></span> 12 missions</span>
+</div>
+</div>
+<!-- Card 2: API Integration -->
+<div class="bg-[#161b30] rounded-xl p-5 border border-white/5 hover:border-primary/20 transition-all group flex flex-col justify-between h-[180px]">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 opacity-70 text-[1.2rem]" style="font-variation-settings: 'FILL' 1;">star</span>
+<h3 class="text-[0.95rem] font-semibold text-on-surface leading-none">API Integration</h3>
+</div>
+<span class="text-[0.65rem] font-mono text-slate-500">ID: CN-002</span>
+</div>
+<div class="pl-3 border-l-2 border-slate-400/12 mb-4">
+<p class="text-on-surface-variant text-[0.8rem] leading-relaxed line-clamp-2">Active 2h ago · 0 overdue · 8 items tuyos · Épicas activas: E-44, E-45</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-[0.72rem] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400"></span> 18 signals</span>
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400/40"></span> 4 missions</span>
+</div>
+</div>
+<!-- Card 3: Mobile Sync -->
+<div class="bg-[#161b30] rounded-xl p-5 border border-white/5 hover:border-primary/20 transition-all group flex flex-col justify-between h-[180px]">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 opacity-70 text-[1.2rem]" style="font-variation-settings: 'FILL' 1;">star</span>
+<h3 class="text-[0.95rem] font-semibold text-on-surface leading-none">Mobile Sync</h3>
+</div>
+<span class="text-[0.65rem] font-mono text-slate-500">ID: CN-003</span>
+</div>
+<div class="pl-3 border-l-2 border-slate-400/12 mb-4">
+<p class="text-on-surface-variant text-[0.8rem] leading-relaxed line-clamp-2">Active 4d ago · 5 overdue · 1 items tuyos · Épicas activas: M-01, M-02</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-[0.72rem] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400"></span> 2 signals</span>
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400/40"></span> 9 missions</span>
+</div>
+</div>
+<!-- Card 4: Neural Engine -->
+<div class="bg-[#161b30] rounded-xl p-5 border border-white/5 hover:border-primary/20 transition-all group flex flex-col justify-between h-[180px]">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 opacity-70 text-[1.2rem]" style="font-variation-settings: 'FILL' 1;">star</span>
+<h3 class="text-[0.95rem] font-semibold text-on-surface leading-none">Neural Engine</h3>
+</div>
+<span class="text-[0.65rem] font-mono text-slate-500">ID: CN-004</span>
+</div>
+<div class="pl-3 border-l-2 border-slate-400/12 mb-4">
+<p class="text-on-surface-variant text-[0.8rem] leading-relaxed line-clamp-2">Active 12m ago · 0 overdue · 12 items tuyos · Épicas activas: X-99, X-100, X-101</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-[0.72rem] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400"></span> 42 signals</span>
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400/40"></span> 1 mission</span>
+</div>
+</div>
+<!-- Card 5: Orbital Relay -->
+<div class="bg-[#161b30] rounded-xl p-5 border border-white/5 hover:border-primary/20 transition-all group flex flex-col justify-between h-[180px]">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 opacity-70 text-[1.2rem]" style="font-variation-settings: 'FILL' 1;">star</span>
+<h3 class="text-[0.95rem] font-semibold text-on-surface leading-none">Orbital Relay</h3>
+</div>
+<span class="text-[0.65rem] font-mono text-slate-500">ID: CN-005</span>
+</div>
+<div class="pl-3 border-l-2 border-slate-400/12 mb-4">
+<p class="text-on-surface-variant text-[0.8rem] leading-relaxed line-clamp-2">Active 6h ago · 1 overdue · 0 items tuyos · Épicas activas: R-12, R-15</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-[0.72rem] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400"></span> 11 signals</span>
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400/40"></span> 33 missions</span>
+</div>
+</div>
+<!-- Card 6: Quantum Logic -->
+<div class="bg-[#161b30] rounded-xl p-5 border border-white/5 hover:border-primary/20 transition-all group flex flex-col justify-between h-[180px]">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 opacity-70 text-[1.2rem]" style="font-variation-settings: 'FILL' 1;">star</span>
+<h3 class="text-[0.95rem] font-semibold text-on-surface leading-none">Quantum Logic</h3>
+</div>
+<span class="text-[0.65rem] font-mono text-slate-500">ID: CN-006</span>
+</div>
+<div class="pl-3 border-l-2 border-slate-400/12 mb-4">
+<p class="text-on-surface-variant text-[0.8rem] leading-relaxed line-clamp-2">Active 1d ago · 2 overdue · 3 items tuyos · Épicas activas: Q-01, Q-02</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-500 text-[0.72rem] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400"></span> 7 signals</span>
+<span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-cyan-400/40"></span> 12 missions</span>
+</div>
+</div>
+</div>
+<!-- Footer Content / Secondary Bento Section -->
+<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="rounded-xl overflow-hidden relative group h-48">
+<img class="w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105" data-alt="Wide shot of Earth from space with city lights at night and a hazy atmosphere glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_ia6xcXYwGss9L12XPAavTlfG9kxeCGIg3sk1mH2-hRbsZAriedlh6cXYgGkS1axkL2AgpkxQZ24_pvwUD4ABkg_pg7HPQMyOTSSZmUN9lOkY0sxf_pydgymFRUyqUMa-tD0zqwDt69XT5PvTX6_F9b1zUdrGvhOpYCqSsyjG3mWyvFs5dPNwX9ssrHXAVDGq1y8kRL61C8Cizys3hNgCdIlW6dzh2lczt5eMQjMp1pyp1yE3GBejifd19ucWqlJdWTHA49r4QGDf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0c0f1a] via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<h4 class="text-primary font-mono text-lg font-bold">Deep Space Network</h4>
+<p class="text-slate-400 text-xs">Connectivity status: Optimal. Next sync in 12m.</p>
+</div>
+</div>
+<div class="bg-surface-container-low border border-white/5 rounded-xl p-6 flex flex-col justify-center">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-500 font-mono">Core Temperature</span>
+<span class="text-xs text-primary font-mono">2.7K</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-2/3"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-500 font-mono">Memory Pressure</span>
+<span class="text-xs text-secondary font-mono">14%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[14%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Suppression Applied: No FAB on List View as per Design System -->
+</body></html>
